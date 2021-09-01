@@ -1,0 +1,18 @@
+.navbar{
+    background-color:#1A4C47; 
+}
+
+.nav-item a{
+    color: #fff;
+    transition: .3s ease-in;
+    
+}
+
+
+.nav-item a:hover{
+    color: #ac2626;;
+}
+
+.fas{
+    margin-right:10px;
+}
