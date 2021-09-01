@@ -95,19 +95,19 @@ function EventoCadastro(props){
         <>
             <Navbar/>
             
-            <div className="col-11 mx-auto">
+            <div className="aln col mx-auto">
                 <div className="row">
                     <h3 className="mx-auto font-weitgh-bold text-center mt-4">{props.match.params.id ? 'Editar Dados' : 'Novo Evento' }</h3>
                 </div>
 
-                <form className=" ">
+                <form className="form">
                     <div className="form-group">
-                        <label>Titulo:</label>
+                        <label className="aln">Titulo:</label>
                         <input onChange={(e) => setTitulo(e.target.value)} type="text" className="form-control" value={titulo && titulo}/>
                     </div>
 
-                    <div className="form-group mt-3 col-2 " >
-                        <label>Tipo do Evento:</label>
+                    <div className="form-group mt-2 " >
+                        <label className=" ">Tipo do Evento:</label>
                         <select onChange={(e) => setTipo(e.target.value)}className="form-control" value={ tipo && tipo } rows="3">
                             <option disabled selected value>-- Selecione um Tipo --</option>
                             <option>Festa</option>
@@ -123,7 +123,7 @@ function EventoCadastro(props){
                         <input onChange={(e) => setHora(e.target.value)} type="time" className="form-control" value={ hora && hora }  />
                     </div>
 
-                    <div className="form-group mt-3 ">
+                    <div className="form-group mt-3">
                         <label>Detalhes:</label>
                         <textarea onChange={(e) => setDetalhes(e.target.value)} className="form-control" value={ detalhes && detalhes } rows="3"/>
                     </div>
