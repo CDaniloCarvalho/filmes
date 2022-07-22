@@ -79,9 +79,7 @@ function Login(){
                     </label>
                     </div>
                     <Link to="recuperarsenha" className="text-white">Esqueceu a senha?</Link>
-
                 </div>
-
                 <div class="text-center text-lg-start mt-4 pt-2">
                     <button type="button" class="btn btn-primary btn-lg"
                     onClick={logar}
@@ -90,20 +88,16 @@ function Login(){
                         <Link to="novousuario" className="link-danger mx-1">Criar Conta</Link>
                     </p>
                 </div>
-
                 </form>
             </div>
             </div>
         </div>
         <div
-            class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+            class="opacity-25 d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 ">
             {/*  Copyright  */}
-            <div class="text-white mb-3 mb-md-0">
-            Copyright © 2022. Danilo Carvalho.
+            <div class="text-white mb-3 mb-md-0  ">
+              <strong class="Copyright">Copyright © 2022. Danilo Carvalho.</strong>  
             </div>
-        
-
-            {/* Right  */}
             <div>
             <a href="#!" class="text-white me-4">
                 <i class="fab fa-facebook-f"></i>
@@ -118,7 +112,6 @@ function Login(){
                 <i class="fab fa-linkedin-in"></i>
             </a>
             </div>
-            {/* Right */}
         </div>
     </section>
 </div>
