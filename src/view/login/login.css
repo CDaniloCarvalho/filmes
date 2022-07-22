@@ -1,38 +1,29 @@
-.login-content {
-    width: 100%;
-    padding: 8%;
-    margin: auto;
-    background-color:#1A4C47;
-    height:100vh;
+
+.main-login{
+background-image: url('https://getwallpapers.com/wallpaper/full/f/e/8/674057.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
 }
 
-.btn-login{
-    background-color: white;
-    color:#1A4C47;
-}
-
-.btn-login:hover{
-    background-color: #ac2626;
+.container-flex{
     color: white;
 }
 
-.opcoes-login a{
-    transition: 0.3s ease-in;
-    text-decoration: none;
-    color:#fff;
+.h-custom {
+    height: calc(100% - 73px);
 }
 
-.opcoes-login a:hover{
-    color:#ac2626;
-}
-
-.form-control {
-    max-width: 500px;
-    margin:auto;
-    
-}
-.btn-p{
-    max-width: 500px;
-    margin: auto;
-  
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
 }
