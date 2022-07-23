@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import firebase from '../../config/firebase';
+import Firebase from '../../config/firebase';
 import 'firebase/auth';
 import './usuario-novo.css';
-import Navbar from '../../components/navbar';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer';
@@ -29,7 +28,7 @@ function NovoUsuario() {
             return;
         }
 
-        firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => {
+        Firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => {
             setCarregando(0);
             setMsgTipo('sucesso')
         }).catch(erro => {
@@ -58,8 +57,8 @@ function NovoUsuario() {
         <div className='main-novo container-flex vh-100'>
             { useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null }
 
-                <div class="container-fluid h-custom ">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
+                <div className="container-fluid h-custom ">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
                     
                     {/* Mensagem de erro ou sucesso*/}
                     <div className="msg-login text-white text-center">
@@ -67,41 +66,41 @@ function NovoUsuario() {
                         {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>}
                     </div>
 
-                        <div class="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">
+                        <div className="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">
                             <form>
-                                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
+                                <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                     <h4>Criar conta</h4>
                                 </div>
 
                                 {/* Email input */}
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3" class="form-control "
+                                <div className="form-outline mb-4">
+                                    <input type="email" id="form3Example3" className="form-control "
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Digite seu email" />
-                                    <label class="form-label" for="form3Example3">Email</label>
+                                    <label className="form-label" htmlFor="form3Example3">Email</label>
                                 </div>
 
                                 {/* Password input */}
-                                <div class="form-outline mb-3">
-                                    <input type="password" id="form3Example4" class="form-control "
+                                <div className="form-outline mb-3">
+                                    <input type="password" id="form3Example4" className="form-control "
                                         onChange={(e) => setSenha(e.target.value)}
                                         placeholder="Digite sua senha" />
-                                    <label class="form-label" for="form3Example4">Senha</label>
+                                    <label className="form-label" htmlFor="form3Example4">Senha</label>
                                 </div>
 
                                 {/* Checkbox */}
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div className="d-flex justify-content-between align-items-center">
                                     <Link to="recuperarsenha" className="text-white">Esqueceu a senha?</Link>
                                 </div>
-                                <div class="text-center text-lg-start mt-4 pt-2">
+                                <div className="text-center text-lg-start mt-4 pt-2">
                                     
-                                    <button onClick={cadastrar} type="button" class="btn btn-primary"
+                                    <button onClick={cadastrar} type="button" className="btn btn-primary"
                                         style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>
                                         {carregando ? <span>Carregando <i className="fas fa-spin fa-spinner "></i></span>
                                         :<span>Cadastrar</span>}
                                     </button>
                                     
-                                    <p class="small fw-bold mt-2 pt-1 mb-0">Já tem uma conta?
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Já tem uma conta?
                                         <Link to="login" className="link-danger mx-1">Realizar login</Link>
                                     </p>
                                 </div>

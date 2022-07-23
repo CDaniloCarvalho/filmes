@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './login.css';
 import { Link, Redirect } from 'react-router-dom';
-import firebase from '../../config/firebase';
+import Firebase from '../../config/firebase';
 import 'firebase/auth';
 import {useSelector, useDispatch} from 'react-redux';
-import logo from '../../img/logo.png'
+import Logo from '../../img/logo.png'
 import Footer from '../../components/footer';
 function Login(){
     
@@ -30,7 +30,7 @@ function Login(){
             return;
         }
 
-        firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
+        Firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             setCarregando(0);
            setMsgTipo('Sucesso');
            setTimeout(() => {
@@ -50,46 +50,46 @@ function Login(){
                 useSelector(state=> state.usuarioLogado) > 0 ? <Redirect to='/' /> : null
             }          
             
-                <div class="container-fluid h-custom">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-md-9 col-lg-6 col-xl-3">
-                        <img src={logo}
-                        class="img-fluid" alt="image" />
+                <div className="container-fluid h-custom">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                    <div className="col-md-9 col-lg-6 col-xl-3">
+                        <img src={Logo}
+                        className="img-fluid" alt="image" />
                     </div>
-                    <div class="login_form col-md-8 col-lg-6 col-xl-4 offset-xl-1 border rounded">
+                    <div className="login_form col-md-8 col-lg-6 col-xl-4 offset-xl-1 border rounded">
                         <form>
-                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
+                            <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                 <h4>Login</h4>
                             </div>
 
                             {/* Email input */}
-                            <div class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control "
+                            <div className="form-outline mb-4">
+                                <input type="email" id="form3Example3" className="form-control "
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Digite seu email" />
-                                <label class="form-label" for="form3Example3">Email</label>
+                                <label className="form-label" htmlFor="form3Example3">Email</label>
                             </div>
 
                             {/* Password input */}
-                            <div class="form-outline mb-3">
-                                <input type="password" id="form3Example4" class="form-control "
+                            <div className="form-outline mb-3">
+                                <input type="password" id="form3Example4" className="form-control "
                                 onChange={(e) => setSenha(e.target.value)}
                                 placeholder="Digite sua senha" />
-                                <label class="form-label" for="form3Example4">Senha</label>
+                                <label className="form-label" htmlFor="form3Example4">Senha</label>
                             </div>
 
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div className="d-flex justify-content-between align-items-center">
                             {/* Checkbox */}
-                                <div class="form-check mb-0">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                <label class="form-check-label" for="form2Example3">
+                                <div className="form-check mb-0">
+                                <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label className="form-check-label" htmlFor="form2Example3">
                                     Lembrar
                                 </label>
                                 </div>
                                 <Link to="recuperarsenha" className="text-white">Esqueceu a senha?</Link>
                             </div>
-                            <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="button" class="btn btn-primary"
+                            <div className="text-center text-lg-start mt-4 pt-2">
+                                <button type="button" className="btn btn-primary"
                                     onClick={logar}
                                     style={{paddingLeft: "2.5rem", paddingRight: "2.5rem"}}>
                                 {
@@ -99,7 +99,7 @@ function Login(){
                                         : <span>Logar</span>
                                     }
                                 </button>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta?  
+                                <p className="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta?  
                                     <Link to="novousuario" className="link-danger mx-1">Criar Conta</Link>
                                 </p>
                             </div>

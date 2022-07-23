@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './recuperar-senha.css';
-import firebase from '../../config/firebase';
+import Firebase from '../../config/firebase';
 import 'firebase/auth';
 import Footer from '../../components/footer';
 import { useSelector } from 'react-redux';
@@ -21,7 +21,7 @@ function RecuperarSenha(){
             setMsg('Você precisa informar o email!')
             return;
         }
-        firebase.auth().sendPasswordResetEmail(email).then(resultado => {
+        Firebase.auth().sendPasswordResetEmail(email).then(resultado => {
             setCarregando(0)
             setMsg('Enviamos um link no seu email para você redefinir a senha!' );
         }).catch(erro => {
@@ -36,30 +36,30 @@ function RecuperarSenha(){
         <div className="container-flex main-login vh-100">
             { useSelector(state=> state.usuarioLogado) > 0 ? <Redirect to='/' /> : null }
             
-                <div class="container-fluid h-custom">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
+                <div className="container-fluid h-custom">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="msg-login text-white text-center ">  
                         <span>{msg}</span>
                     </div>
-                        <div class="login_form col-md-8 col-lg-6 col-xl-4  border rounded">
+                        <div className="login_form col-md-8 col-lg-6 col-xl-4  border rounded">
                             <form>
-                                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
+                                <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                     <h4>Recuperar Senha</h4>
                                 </div>
 
                                 {/* Email input */}
-                                <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3" class="form-control"
+                                <div className="form-outline mb-4">
+                                    <input type="email" id="form3Example3" className="form-control"
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Digite seu email" />
-                                    <label class="form-label" for="form3Example3">Email</label>
+                                    <label className="form-label" htmlFor="form3Example3">Email</label>
                                 </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div className="d-flex justify-content-between align-items-center">
                                     <Link to="login" className="text-white">Realizar login</Link>
                                 </div>
-                                <div class="text-center text-lg-start mt-4 pt-2">
-                                    <button type="button" class="btn btn-primary"
+                                <div className="text-center text-lg-start mt-4 pt-2">
+                                    <button type="button" className="btn btn-primary"
                                         onClick={redefinir}
                                         style={{paddingLeft: "2.5rem", paddingRight: "2.5rem"}}>
                                         {
@@ -69,7 +69,7 @@ function RecuperarSenha(){
                                             : <span>Recuperar Senha</span>
                                         }
                                     </button>
-                                    <p class="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta?  
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta?  
                                         <Link to="novousuario" className="link-danger mx-1">Criar Conta</Link>
                                     </p>
                                 </div>

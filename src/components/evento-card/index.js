@@ -13,7 +13,10 @@ function EventoCard({id, img, titulo, detalhes, visualizacoes}){
 
     return(
         <div className="col-md-3 col-sm-12 ">
-            <img src={urlImagem} className="card-img-top img-cartao" alt="Imagem"/>
+        {
+            !img ? <div className="row  mt-3 "><div class="spinner-border text-danger mx-auto"></div></div>
+            :<img src={urlImagem} className="card-img-top img-cartao" alt="Imagem"/>
+        }
 
             <div className="card-body">
                 <h1>{titulo}</h1>

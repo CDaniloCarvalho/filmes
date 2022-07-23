@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './evento-cadastro.css';
 import {useSelector} from 'react-redux';
-import firebase from '../../config/firebase';
+import Firebase from '../../config/firebase';
 import Navbar from '../../components/navbar';
 import { Redirect } from 'react-router';
 
@@ -19,14 +19,14 @@ function EventoCadastro(props){
     const [fotoNova, setFotoNova] = useState();
     const usuarioEmail = useSelector(state => state.usuarioEmail);
 
-    const storage = firebase.storage();
-    const db = firebase.firestore();
+    const storage = Firebase.storage();
+    const db = Firebase.firestore();
     
     
     useEffect(() => {
         
         if(props.match.params.id){
-            firebase.firestore().collection('Eventos').doc(props.match.params.id).get().then(resultado =>   {
+            Firebase.firestore().collection('Eventos').doc(props.match.params.id).get().then(resultado =>   {
             setTitulo(resultado.data().titulo)
             setTipo(resultado.data().tipo)
             setDetalhes(resultado.data().detalhes)

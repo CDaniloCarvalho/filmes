@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {store, persistor} from '../src/store/';
-import {persistGate} from 'redux-persist/integration/react';
+import {PersistGate} from 'redux-persist/integration/react';
 import Home from './view/home';
 import Login from './view/login';
 import NovoUsuario from './view/usuario-novo';
@@ -15,7 +15,7 @@ import EventoDetalhes from './view/evento-detalhes';
 function App() {
   return (
     <Provider store={store}>
-      <persistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
       <Router>
         <Route exact path='/' component={Home} />
         <Route path='/eventos/:parametro' component={Home} />
@@ -26,7 +26,7 @@ function App() {
         <Route exact path='/eventodetalhes/:id' component={EventoDetalhes} />
         <Route exact path='/editarevento/:id' component={EventoCadastro} />
       </Router>
-      </persistGate>
+      </PersistGate>
    </Provider>
   );
 }
