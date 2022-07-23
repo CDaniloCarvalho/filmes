@@ -59,12 +59,12 @@ function Login(){
                     <div class="login_form col-md-8 col-lg-6 col-xl-4 offset-xl-1 border rounded">
                         <form>
                             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
-                                <h2>Login</h2>
+                                <h4>Login</h4>
                             </div>
 
                             {/* Email input */}
                             <div class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control form-control-lg"
+                                <input type="email" id="form3Example3" class="form-control "
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Digite seu email" />
                                 <label class="form-label" for="form3Example3">Email</label>
@@ -72,7 +72,7 @@ function Login(){
 
                             {/* Password input */}
                             <div class="form-outline mb-3">
-                                <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                <input type="password" id="form3Example4" class="form-control "
                                 onChange={(e) => setSenha(e.target.value)}
                                 placeholder="Digite sua senha" />
                                 <label class="form-label" for="form3Example4">Senha</label>
@@ -89,7 +89,7 @@ function Login(){
                                 <Link to="recuperarsenha" className="text-white">Esqueceu a senha?</Link>
                             </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="button" class="btn btn-primary btn-lg"
+                                <button type="button" class="btn btn-primary"
                                     onClick={logar}
                                     style={{paddingLeft: "2.5rem", paddingRight: "2.5rem"}}>
                                 {

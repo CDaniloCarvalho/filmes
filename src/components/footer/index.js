@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Footer = () => {
+    
     return(
-
         <div
-            class="opacity-25 d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-6 ">
+            class="opacity-25 d-flex flex-column flex-md-row text-center justify-content-between py-4 px-4 px-xl-6 ">
             {/*  Copyright  */}
-            <div class="text-white  mb-md-0  ">
+            <div class="text-white">
                 <strong class="Copyright">Copyright © 2022. Danilo Carvalho.</strong>
             </div>
             <div>
