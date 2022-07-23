@@ -41,14 +41,14 @@ function Login(){
                 
             </form> 
             */}
-    <section class="vh-100">
+    <section class="vh-100 ">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-3">
                 <img src={logo}
                 class="img-fluid" alt="image" />
             </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <div class="login_form col-md-8 col-lg-6 col-xl-4 offset-xl-1 border rounded">
                 <form>
                 <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                     <h2>Login</h2>

@@ -1,9 +1,16 @@
 .form-login{
-    max-width: 650px;
+    max-width: 500px;
 }
 
+.main-login{
+    background-image: url('https://getwallpapers.com/wallpaper/full/0/3/4/51562.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+
 .btn-cadastro{
-    background-color: #1A4C47;
     color: #fff;
 }
 

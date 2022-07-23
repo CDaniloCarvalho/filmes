@@ -7,8 +7,6 @@ import Navbar from '../../components/navbar';
 
 function NovoUsuario(){
 
-    
-
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
@@ -48,15 +46,14 @@ function NovoUsuario(){
                     break;
                 default:
                     setMsg('Não foi possível cadastrar. Tente mais tarde!');
-                    break;
-                    
+                    break;      
             }
         })
     }
 
     return(
 
-        <>
+        <div className='main-login'>
 
             <Navbar/>   
 
@@ -68,7 +65,7 @@ function NovoUsuario(){
                     <input onChange={(e) => setSenha(e.target.value)} type="password" className="form-control my-2" placeholder="Senha"/>
                     {
                         carregando ? <div ><i className="fas fa-spin fa-spinner mt-3 fa-3x"></i></div>
-                        : <button onClick={cadastrar} type="button" className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro">Cadastrar</button>
+                        : <button onClick={cadastrar} type="button" className="btn btn-primary btn-lg btn-block mt-3 mb-5 btn-cadastro">Cadastrar</button>
                     }
                     
                     <div className="msg-login text-black text-center my-5"> 
@@ -78,7 +75,7 @@ function NovoUsuario(){
 
                 </form>
             </div>
-        </>    
+        </div>    
     )
 }
 
