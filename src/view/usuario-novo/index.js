@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import './usuario-novo.css';
+import Navbar from '../../components/navbar';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -54,16 +55,17 @@ function NovoUsuario() {
     return (
 
         <div className='main-novo container-flex'>
+            {/* <Navbar /> */}
                 { useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null }
 
+                {/* <div className="msg-login text-black text-center my-5">
+                    {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Cadastro realizado com sucesso! &#128526;</span>}
+                    {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>}
+                </div> */}
 
                 <section class="vh-100 ">
                     <div class="container-fluid h-custom">
                         <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div className=" msg_resposta text-white text-center ">
-                            {msgTipo === 'sucesso' && <span>Cadastro realizado com sucesso! &#128526;</span>}
-                            {msgTipo === 'erro' && <span>{msg} &#128546;</span>}
-                        </div>
                             <div class="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">
                                 <form>
                                 
@@ -92,13 +94,11 @@ function NovoUsuario() {
                                         <Link to="recuperarsenha" className="text-white">Esqueceu a senha?</Link>
                                     </div>
                                     <div class="text-center text-lg-start mt-4 pt-2">
-                                            <button onClick={cadastrar} type="button" class="btn btn-primary btn-lg"
-                                                style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>
-                                                {
-                                                    carregando ? <span>Carregando <i className="fas fa-spin fa-spinner "></i></span>
-                                                        : <span>Cadastrar</span>
-                                                }
-                                            </button>
+                                        {
+                                            carregando ? <div ><i className="fas fa-spin fa-spinner mt-3 fa-3x"></i></div>
+                                                : <button onClick={cadastrar} type="button" class="btn btn-primary btn-lg"
+                                            style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>Cadastrar</button>
+                                        }
                                         <p class="small fw-bold mt-2 pt-1 mb-0">Já tem uma conta?
                                             <Link to="login" className="link-danger mx-1">Realizar login</Link>
                                         </p>

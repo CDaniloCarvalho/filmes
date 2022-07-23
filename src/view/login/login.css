@@ -16,12 +16,13 @@ font-family: 'Numans', sans-serif;
 
 .msg_resposta{
     position: absolute;
-    top: 120px;
+    bottom: 10px;
+    margin: auto;
 }
 
 .login_form{
     background-color: rgba(40, 40, 40, 0.564);
-    padding: 50px;
+    padding: 30px;
 }
 
 .Copyright{
