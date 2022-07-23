@@ -15,6 +15,12 @@ function RecuperarSenha(){
 
     function redefinir(){
         setCarregando(1)
+
+        if (!email) {
+            setCarregando(0);
+            setMsg('Você precisa informar o email!')
+            return;
+        }
         firebase.auth().sendPasswordResetEmail(email).then(resultado => {
             setCarregando(0)
             setMsg('Enviamos um link no seu email para você redefinir a senha!' );
@@ -43,7 +49,7 @@ function RecuperarSenha(){
 
                                 {/* Email input */}
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="form3Example3" class="form-control "
+                                    <input type="email" id="form3Example3" class="form-control"
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Digite seu email" />
                                     <label class="form-label" for="form3Example3">Email</label>
