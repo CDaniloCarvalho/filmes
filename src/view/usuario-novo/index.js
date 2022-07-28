@@ -13,10 +13,15 @@ function NovoUsuario() {
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
     const [msg, setMsg] = useState();
+    const [alertas, setAlertas] = useState();
     const [carregando, setCarregando] = useState();
 
-    function cadastrar() {
+    const fecharAlerta = () => {
+        setAlertas(0)
+    }
 
+    function cadastrar() {
+        setAlertas(1)
         setCarregando(1);
 
         setMsgTipo(null);
@@ -24,6 +29,7 @@ function NovoUsuario() {
         if (!email || !senha) {
             setMsgTipo('erro')
             setCarregando(0);
+            
             setMsg('Você precisa informar o email e senha para realizar o cadastro!')
             return;
         }
@@ -62,8 +68,24 @@ function NovoUsuario() {
                     
                     {/* Mensagem de erro ou sucesso*/}
                     <div className="msg-login text-white text-center">
-                        {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Cadastro realizado com sucesso! &#128526;</span>}
-                        {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>}
+
+                    {   alertas &&
+                        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                            <div  class="bg-danger rounded p-2" >
+                                <div class="toast-header">
+                                    <strong class="me-auto">Atenção</strong>
+                                    <button onClick={fecharAlerta} type="button" class="btn-close"  ></button>
+                                </div>
+                                <div class="toast-body">
+                                {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>}
+                                {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Cadastro realizado com sucesso! &#128526;</span>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                        {/* {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Cadastro realizado com sucesso! &#128526;</span>}
+                        {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>} */}
                     </div>
 
                         <div className="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">
