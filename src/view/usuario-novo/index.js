@@ -17,11 +17,11 @@ function NovoUsuario() {
     const [carregando, setCarregando] = useState();
 
     const fecharAlerta = () => {
-        setAlertas(0)
+        setAlertas(false)
     }
 
     function cadastrar() {
-        setAlertas(1)
+        setAlertas(true)
         setCarregando(1);
 
         setMsgTipo(null);
@@ -34,27 +34,32 @@ function NovoUsuario() {
             return;
         }
 
-        Firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => {
+        Firebase.auth().createUserWithEmailAndPassword(email, senha).then(() => {
             setCarregando(0);
             setMsgTipo('sucesso')
+            setTimeout(() => {<Redirect to='/' />},1000)
         }).catch(erro => {
             setCarregando(0);
-            setMsgTipo('erro')
-
+            
             switch (erro.message) {
+
                 case 'Password should be at least 6 characters':
                     setMsg('A senha deve ter pelo menos 6 caracteres!')
                     break;
-                case 'The email address is already in use by another account.':
+
+                    case 'The email address is already in use by another account.':
                     setMsg('Este email já está sendo utilizado por outro usuário!')
                     break;
-                case 'The email address is badly formatted.':
+
+                    case 'The email address is badly formatted.':
                     setMsg('O formato do email é inválido!')
                     break;
-                default:
+
+                    default:
                     setMsg('Não foi possível cadastrar. Tente mais tarde!');
                     break;
-            }
+                }
+                setMsgTipo('erro')
         })
     }
 
@@ -70,15 +75,16 @@ function NovoUsuario() {
                     <div className="msg-login text-white text-center">
 
                     {   alertas &&
-                        <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                            <div  class="bg-danger rounded p-2" >
+                        <div  className="position-fixed top-0 end-0 p-3 delay">
+                            {/* <div  class={`${ "bg-warning rounded p-2" }` }> */}
+                            <div  className={`rounded p-2 bg-${ msgTipo === 'erro' ?  'warning' : 'sucesso'}`}>
                                 <div class="toast-header">
-                                    <strong class="me-auto">Atenção</strong>
-                                    <button onClick={fecharAlerta} type="button" class="btn-close"  ></button>
+                                    <span class="me-auto">Atenção</span>    <i class="fa-solid fa-triangle-exclamation bg-black"></i>
+                                    <button onClick={fecharAlerta} type="button" class="btn-close"></button>
                                 </div>
                                 <div class="toast-body">
-                                {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>}
-                                {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Cadastro realizado com sucesso! &#128526;</span>}
+                                    {msgTipo === 'erro' && <span> {msg} &#128546;</span>}
+                                    {msgTipo === 'sucesso' && <span>Cadastro realizado com sucesso! &#128526;</span>}
                                 </div>
                             </div>
                         </div>
