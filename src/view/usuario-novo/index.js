@@ -77,21 +77,17 @@ function NovoUsuario() {
                     {   alertas &&
                         <div  className="position-fixed top-0 end-0 p-3 delay">
                             {/* <div  class={`${ "bg-warning rounded p-2" }` }> */}
-                            <div  className={`rounded p-2 bg-${ msgTipo === 'erro' ?  'warning' : 'sucesso'}`}>
-                                <div class="toast-header">
-                                    <span class="me-auto">Atenção</span>    <i class="fa-solid fa-triangle-exclamation bg-black"></i>
-                                    <button onClick={fecharAlerta} type="button" class="btn-close"></button>
-                                </div>
+                            <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>
+                                
                                 <div class="toast-body">
-                                    {msgTipo === 'erro' && <span> {msg} &#128546;</span>}
+                                    {msgTipo === 'erro' && <span><i className=" fas fa-exclamation-triangle"></i> {msg} </span>}
                                     {msgTipo === 'sucesso' && <span>Cadastro realizado com sucesso! &#128526;</span>}
+                                    <button onClick={fecharAlerta} type="button" class="btn-close"></button>
                                 </div>
                             </div>
                         </div>
                     }
 
-                        {/* {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Cadastro realizado com sucesso! &#128526;</span>}
-                        {msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128546;</span>} */}
                     </div>
 
                         <div className="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">
