@@ -21,7 +21,6 @@ function NovoUsuario() {
     }
 
     function cadastrar() {
-        setAlertas(true)
         setCarregando(1);
 
         setMsgTipo(null);
@@ -29,7 +28,7 @@ function NovoUsuario() {
         if (!email || !senha) {
             setMsgTipo('erro')
             setCarregando(0);
-            
+            setAlertas(true)
             setMsg('Você precisa informar o email e senha para realizar o cadastro!')
             return;
         }
@@ -37,10 +36,11 @@ function NovoUsuario() {
         Firebase.auth().createUserWithEmailAndPassword(email, senha).then(() => {
             setCarregando(0);
             setMsgTipo('sucesso')
+            setAlertas(true)
             setTimeout(() => {<Redirect to='/' />},1000)
         }).catch(erro => {
             setCarregando(0);
-            
+            setAlertas(true)
             switch (erro.message) {
 
                 case 'Password should be at least 6 characters':
@@ -73,21 +73,19 @@ function NovoUsuario() {
                     
                     {/* Mensagem de erro ou sucesso*/}
                     <div className="msg-login text-white text-center">
-
-                    {   alertas &&
-                        <div  className="position-fixed top-0 end-0 p-3 delay">
-                            {/* <div  class={`${ "bg-warning rounded p-2" }` }> */}
-                            <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>
-                                
-                                <div class="toast-body">
-                                    {msgTipo === 'erro' && <span><i className=" fas fa-exclamation-triangle"></i> {msg} </span>}
-                                    {msgTipo === 'sucesso' && <span>Cadastro realizado com sucesso! &#128526;</span>}
-                                    <button onClick={fecharAlerta} type="button" class="btn-close"></button>
+                        {   alertas &&
+                            <div  className="position-fixed top-0 end-0 p-3 delay">
+                                {/* <div  class={`${ "bg-warning rounded p-2" }` }> */}
+                                <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>
+                                    
+                                    <div class="toast-body">
+                                        {msgTipo === 'erro' && <span><i className="fas fa-exclamation-triangle"></i> {msg} </span>}
+                                        {msgTipo === 'sucesso' && <span>Cadastro realizado com sucesso! &#128526;</span>}
+                                        <button onClick={fecharAlerta} type="button" class="btn-close"></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-
+                        }
                     </div>
 
                         <div className="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">

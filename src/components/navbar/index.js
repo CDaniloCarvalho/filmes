@@ -1,7 +1,7 @@
 import React from 'react';
 import './navbar.css';
-import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
+import { Redirect, Link } from 'react-router-dom';
 
 
 function Navbar(){
@@ -23,14 +23,10 @@ function Navbar(){
                                 <>
                                     <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventocadastro">Publicar Eventos</Link></li>            
                                     <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventos/meus">Meus Eventos</Link></li>            
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" onClick={()=>   dispatch({type:'LOG_OUT'})}>Sair</Link></li>  
+                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>Sair</Link></li>  
                                 </>
                                     :
-                                <>
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/novousuario">Cadastrar</Link></li>            
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/login">Login</Link></li>            
-                                </>
-                                    
+                                    <Redirect to="/login" />     
                             }
 
                         </ul>

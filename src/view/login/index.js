@@ -12,34 +12,41 @@ function Login(){
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
     const [msg, setMsg] = useState();
+    const [alertas, setAlertas] = useState();
     const [carregando, setCarregando] = useState();
     
     const dispatch =  useDispatch();
     
-    
+    const fecharAlerta = () => {
+        setAlertas(false)
+    }
+
     function logar(){
-
+        
         setCarregando(1);
-
         setMsgTipo(null);
         
         if (!email || !senha) {
             setCarregando(0);
-            setMsgTipo('Erro')
+
+            setMsgTipo('erro')
             setMsg('Você precisa informar o email e senha para realizar o login!')
+            setAlertas(true)
             return;
         }
 
         Firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             setCarregando(0);
-           setMsgTipo('Sucesso');
+           setMsgTipo('sucesso');
+           setAlertas(true)
            setTimeout(() => {
             dispatch({type:'LOG_IN', usuarioEmail:email});
            },2000);
            
         }).catch(erro => {
             setCarregando(0);
-            setMsgTipo('Erro');
+            setMsgTipo('erro');
+            setAlertas(true)
         });
     }
     
@@ -56,7 +63,7 @@ function Login(){
                         <img src={Logo}
                         className="img-fluid" alt="image" />
                     </div>
-                    <div className="login_form col-md-8 col-lg-6 col-xl-4 offset-xl-1 border rounded">
+                    <div className="login_form col-md-8 col-lg-6 col-xl-4 mt-3 offset-xl-1 border rounded">
                         <form>
                             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                 <h4>Login</h4>
@@ -107,10 +114,22 @@ function Login(){
                     </div>
                     </div>
                 </div>
-                <div className="msg_resposta text-white text-center "> 
-                    {msgTipo === 'Sucesso' && <span><strong>Wow!</strong> Login realizado com sucesso! &#128526;</span>}   
-                    {msgTipo === 'Erro' && <span><strong>Ops!</strong>  {msg ? msg : 'Verifique se o usuário e senha estão corretos.'} &#128546;</span>}
-                </div> 
+               {/* Mensagem de erro ou sucesso*/}
+               <div className="msg-login text-white text-center ">
+                    {   alertas &&
+                        <div  className="position-fixed top-0 end-0 p-3 delay">
+                            {/* <div  class={`${ "bg-warning rounded p-2" }` }> */}
+                            <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>
+                                
+                                <div class="toast-body">
+                                    {msgTipo === 'erro' && <span><i className="fas fa-exclamation-triangle"></i> Verifique o email e senha digitados </span>}
+                                    {msgTipo === 'sucesso' && <span>Login realizado com sucesso! &#128526;</span>}
+                                    <button onClick={fecharAlerta} type="button" class="btn-close"></button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
                 <Footer />
         </div>
     );
