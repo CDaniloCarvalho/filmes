@@ -8,10 +8,7 @@ const Footer = () => {
             {/*  Copyright  */}
             <div className="text-white">
             
-                <strong className="Copyright">Danilo Carvalho - 2022 -  </strong>
-                <a href="#!" className="text-white">
-                    <i className="fab fa-linkedin-in"></i>
-                </a>
+                <strong className="Copyright">Danilo Carvalho - 2022</strong>
             </div>
         </div>
     )

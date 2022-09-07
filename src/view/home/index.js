@@ -48,21 +48,21 @@ function Home({match}){
     },[]);
 
     return(
-        <di>
+        <div className='main-home'>
             <Navbar/>    
             <div className="row p-3">
                 <h3 className="text-center p-5">Publicações</h3>
-                <input onChange={(e) => setPesquisa(e.target.value)} type="text" className="form-control text-center" placeholder="Pesquisar evento..."/>
+                <input onChange={(e) => setPesquisa(e.target.value)} type="text" className="barra-pesquisa form-control text-center" placeholder="Pesquisar evento..."/>
             </div>
 
             {
-                img ? <div className="row  mt-3 "><div class="spinner-border text-danger mx-auto"></div></div>
+                img ? <div className="row  mb-3 "><div class="spinner-border text-danger mx-auto mb-2"></div></div>
                 : 
-                <div className="row p-3">
+                <div className="row p-3 mt-3">
                     {eventos.map (item => <EventoCard key={item.id} id={item.id} img={item.foto} titulo={item.titulo} detalhes={item.detalhes} visualizacoes={item.visualizacoes}/>) }
                 </div>   
             }    
-        </di>
+        </div>
     )
 };
 

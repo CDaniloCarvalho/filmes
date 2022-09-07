@@ -1,16 +1,14 @@
 .navbar{
-    background-color:#1A4C47; 
+    background-color:#1a274cbb;
 }
 
 .nav-item a{
     color: #fff;
     transition: .3s ease-in;
-    
 }
 
-
 .nav-item a:hover{
-    color: #ac2626;;
+    color: #bebfc0;;
 }
 
 .fas{

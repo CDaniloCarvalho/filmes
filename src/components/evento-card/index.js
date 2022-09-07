@@ -24,7 +24,7 @@ function EventoCard({id, img, titulo, detalhes, visualizacoes}){
                     {detalhes}
                 </p>
 
-                <div className="row rodape-card d-flex align-items-center">
+                <div className="row rodape-card d-flex align-items-center mb-3">
                     <div className="col-6">
                         <Link to={"/eventodetalhes/" + id} className="btn btn-sn btn-detalhes"> + Detalhes</Link>
                     </div>

@@ -63,7 +63,7 @@ function Login(){
                         <img src={Logo}
                         className="img-fluid" alt="image" />
                     </div>
-                    <div className="login_form col-md-8 col-lg-6 col-xl-4 mt-3 offset-xl-1 border rounded">
+                    <div className="login_form col-md-8 col-lg-6 col-xl-4 mt-5 offset-xl-1 border rounded">
                         <form>
                             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                 <h4>Login</h4>

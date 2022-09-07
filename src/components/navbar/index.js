@@ -21,8 +21,8 @@ function Navbar(){
                             { 
                                     useSelector(state=> state.usuarioLogado) > 0 ?
                                 <>
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventocadastro">Publicar Eventos</Link></li>            
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventos/meus">Meus Eventos</Link></li>            
+                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventocadastro">Publicar</Link></li>            
+                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventos/meus">Minhas publicações</Link></li>            
                                     <li className="nav-item"><Link className="nav-link " aria-current="page" to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>Sair</Link></li>  
                                 </>
                                     :
