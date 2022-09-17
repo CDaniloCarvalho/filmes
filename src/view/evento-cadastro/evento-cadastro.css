@@ -1,14 +1,5 @@
-.btn-cadastro{
-    background-color: #1A4C47;
-    color: #fff;
-    
-}
-
-.btn-cadastro:hover{
-    background-color: #ac2626;
-   
-}
 .aln{
     margin: auto;
-    max-width: 500px;
+    max-width: 800px;
+    color:white;
 }

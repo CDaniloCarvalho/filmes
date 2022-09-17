@@ -57,7 +57,7 @@ function Home({match}){
         <div className='main-home'>
             <Navbar/>    
 
-            <div className="row p-3">
+            <div className="row p-3 ">
                 <h3 className="text-center p-5 ">Publicações</h3>
                 <div class="input-group mb-3 barra-pesquisa">
                     <input onChange={(e) => setPesquisa(e.target.value)} type="text" className="form-control text-center " placeholder="Pesquisar..."/>
