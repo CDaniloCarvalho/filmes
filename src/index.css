@@ -1,6 +1,5 @@
 body{
-    background-image: url('https://media.istockphoto.com/illustrations/music-notes-on-bars-illustration-id167590525?k=20&m=167590525&s=170667a&w=0&h=-IbVU2sowkM5FITBLmMsFB8ghOpYlAlkAQLi_59OoTs=');
-
+    background-image: url('../src/img/img-fundo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width:  100%;

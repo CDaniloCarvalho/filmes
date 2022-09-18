@@ -127,7 +127,7 @@ function EventoCadastro(props){
                         </div>
                     }
                 </div>
-            <div className="aln col mx-auto border border-1 p-5 mt-4 rounded bg-white bg-opacity-10">
+            <div className="aln col mx-auto border border-1 p-5 mt-4 rounded bg-white ">
 
                 <div className="row">
                     <h3 className="mx-auto font-weitgh-bold text-center mt-4">{props.match.params.id ? 'Editar Dados' : 'Novo Evento' }</h3>
@@ -135,7 +135,7 @@ function EventoCadastro(props){
 
                 <form className="form row">
                     <div className=" col-md-6">
-                        <label className="aln">Titulo:</label><span className="text-danger "> *</span>
+                        <label className="aln ">Titulo:</label><span className="text-danger "> *</span>
                         <input onChange={(e) => setTitulo(e.target.value)} type="text" className="form-control" value={titulo && titulo}/>
                     </div>
 
