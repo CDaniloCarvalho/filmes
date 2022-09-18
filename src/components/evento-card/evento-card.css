@@ -4,17 +4,12 @@
 }
 
 .btn-detalhes{
-    background-color: #1A4C47;
-    color: #fff;
-}
-
-.btn-detalhes{
-    background-color: #319B90;
+    background-color: #1a274cbb;
     color: #fff;
 }
 
 .btn-detalhes:hover{
-    background-color: #ac2626;
+    background-color: #1a274c8a;
     color: #fff;
 }
 
@@ -27,5 +22,6 @@
 
 .img-cartao{
     max-height: 150px;
+    min-height: 150px;
     min-width: 100%;
 }

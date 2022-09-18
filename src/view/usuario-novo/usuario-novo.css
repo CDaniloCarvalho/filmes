@@ -1,10 +1,21 @@
-.form-login{
-    max-width: 650px;
-}
 
 .btn-cadastro{
-    background-color: #1A4C47;
     color: #fff;
+}
+
+.msg_resposta{
+    position: absolute;
+    top: 120px;
+    margin: auto;
+}
+
+.btn-close{
+    z-index: 4;
+}
+
+.login_novo{
+    background-color: rgba(40, 40, 40, 0.564);
+    padding: 20px 30px;
 }
 
 .btn-cadastro:hover{
