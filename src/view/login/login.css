@@ -29,9 +29,21 @@
 .h-custom {
     height: calc(100% - 73px);
 }
+@media (max-width: 1200px) {
+    .img-logo{
+        display: none;
+    }
+    .login_form{
+        max-width: 400px;
+    }
+}
 
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;
     }
+    .login_form{
+        width: auto;
+    }
+    
 }

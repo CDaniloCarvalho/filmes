@@ -60,10 +60,10 @@ function Login(){
             
                 <div className="container-fluid h-custom">
                     <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-md-9 col-lg-6 col-xl-3">
-                        <img src={Logo}
-                        className="img-fluid" alt="image" />
-                    </div>
+                        <div className="col-md-9 col-lg-6 col-xl-3 img-logo">
+                            <img src={Logo}
+                            className="img-fluid" alt="image" />
+                        </div>
                     <div className="login_form col-md-8 col-lg-6 col-xl-4 mt-5 offset-xl-1 border rounded">
                         <form>
                             <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
