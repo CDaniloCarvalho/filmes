@@ -47,10 +47,6 @@ function Home({match}){
         });
     }
 
-    
-        
-
-       
     });
 
     return(

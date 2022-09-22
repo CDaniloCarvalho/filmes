@@ -53,23 +53,23 @@ function EventoDetalhes(props){
                         <div className="col-12 text-right mt-1 visualizacoes">
                             <i className="fas fa-eye"></i><span>{evento.visualizacoes + 1}</span>
                         </div>
-                        <h3 className='text-center mt-5'><strong>{evento.titulo}</strong></h3>
+                        <h3 className='text-center mt-5 text-light text-shadow'><strong>{evento.titulo}</strong></h3>
                     </div>
 
                     <div className="row mt-5 d-flex justify-content-around" >
-                        <div className="col-md-3 col-sm-12 box-info p-3 my-2">
+                        <div className="col-md-3 col-sm-12 box-info p-3 my-2 rounded">
                             <i className="fas fa-ticket-alt fa-2x m-1"></i>
                             <h5><strong>Tipo</strong></h5>
                             <span className="mt-3">{evento.tipo}</span>
                         </div>
 
-                        <div className="col-md-3 col-sm-12 box-info p-3 my-2">
+                        <div className="col-md-3 col-sm-12 box-info p-3 my-2 rounded">
                             <i className="fas fa-calendar-alt fa-2x m-1"></i>
                             <h5><strong>Data</strong></h5>
                             <span className="mt-3">{evento.data}</span>
                         </div>
 
-                        <div className="col-md-3 col-sm-12 box-info p-3 my-2">
+                        <div className="col-md-3 col-sm-12 box-info p-3 my-2 rounded">
                             <i className="fas fa-clock fa-2x m-1"></i>
                             <h5><strong>Hora</strong></h5>
                             <span className="mt-3">{evento.hora}</span>
@@ -77,11 +77,11 @@ function EventoDetalhes(props){
                     </div>
 
                     <div className="row box-detalhes mt-5">
-                        <div className="col-12 text-center">
+                        <div className="col-12 text-center text-light">
                             <h5><strong>Detalhes</strong></h5>
                         </div>
                         
-                        <div className="col-12 text-center">
+                        <div className="col-12 text-center text-light">
                             <p>{evento.detalhes}</p>
                         </div>
                     </div>    

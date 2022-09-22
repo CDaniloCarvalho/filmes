@@ -17,7 +17,7 @@ function EventoCadastro(props){
     const [fotoAtual, setFotoAtual] = useState();
     const [fotoNova, setFotoNova] = useState();
     const [alertas, setAlertas] = useState();
-
+    const [redirectFunc, setRedirectFunc] = useState(false);
     const usuarioEmail = useSelector(state => state.usuarioEmail);
 
     const storage = Firebase.storage();
@@ -49,7 +49,8 @@ function EventoCadastro(props){
             setAlertas(true)
             setMsgTipo('erro');
             setCarregando(0);
-
+            
+            
         }else if(fotoNova){
             storage.ref(`imagens/${fotoNova.name}`).put(fotoNova);
             db.collection('Eventos').doc(props.match.params.id).update({
@@ -63,6 +64,9 @@ function EventoCadastro(props){
                 setAlertas(true)
                 setMsgTipo('sucesso');
                 setCarregando(0);
+                setTimeout(() => {
+                    setRedirectFunc(true)
+                }, 5000);
             }).catch(() =>{
                 setAlertas(true)
                 setMsgTipo('erro');
@@ -98,11 +102,15 @@ function EventoCadastro(props){
                     setMsgTipo('sucesso');
                     setAlertas(true)
                     setCarregando(0);
+                    setTimeout(() => {
+                        setRedirectFunc(true)
+                    }, 5000);
                 }).catch(() =>{
                     setMsgTipo('erro');
                     setAlertas(true)
                     setCarregando(0);
                 });
+                
                 
             });
         }   
@@ -113,13 +121,14 @@ function EventoCadastro(props){
 
         <div>
             <Navbar/>
+            {redirectFunc ? <Redirect to="/" /> : ''  }
              {/* Mensagem de erro ou sucesso*/}
              <div className=" text-white text-center ">
                     {   alertas &&
-                        <div  className="position-fixed top-0 end-0 p-3 delay">
+                        <div  className="position-fixed top-0 end-0 p-3 delay ">
                             <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>                                
                                 <div class="toast-body">
-                                    {msgTipo === 'sucesso' && <span><strong>Wow!</strong>Eventos cadastrado com sucesso! &#128526;</span>}
+                                    {msgTipo === 'sucesso' && <span>Publicado com sucesso! &#128526;</span>}
                                     {msgTipo === 'erro' && <span> Não foi possivel realizar a publicação! &#128546;</span>}
                                     <button onClick={fecharAlerta} type="button" class="btn-close"></button>
                                 </div>
@@ -127,10 +136,10 @@ function EventoCadastro(props){
                         </div>
                     }
                 </div>
-            <div className="aln col mx-auto border border-1 p-5 mt-4 rounded bg-white ">
+            <div className="aln col mx-auto border border-1 p-4 mt-4 rounded bg-white ">
 
                 <div className="row">
-                    <h3 className="mx-auto font-weitgh-bold text-center mt-4">{props.match.params.id ? 'Editar Dados' : 'Novo Evento' }</h3>
+                    <h4 className="mx-auto font-weitgh-bold text-center mb-4">{props.match.params.id ? 'Editar Dados' : 'Novo Evento' }</h4>
                 </div>
 
                 <form className="form row">
@@ -139,7 +148,7 @@ function EventoCadastro(props){
                         <input onChange={(e) => setTitulo(e.target.value)} type="text" className="form-control" value={titulo && titulo}/>
                     </div>
 
-                    <div className=" col-md-6" >
+                    <div className="tipo col-md-6" >
                         <label className=" ">Tipo do Evento:</label><span className="text-danger "> *</span>
                         <select onChange={(e) => setTipo(e.target.value)}className="form-control" value={ tipo && tipo } rows="3">
                             <option disabled selected value>-- Selecione um Tipo --</option>
@@ -165,7 +174,7 @@ function EventoCadastro(props){
                         <textarea onChange={(e) => setDetalhes(e.target.value)} className="form-control" value={ detalhes && detalhes } rows="3"/>
                     </div>
 
-                    <div className=" col-md-12">
+                    <div className=" mt-3 col-md-12">
                         <label>Foto</label><span className="text-danger "> *</span>
                         <input onChange={(e) => setFotoNova(e.target.files[0])} type="file" className="form-control col-md-4"/>
                     </div>
@@ -173,7 +182,7 @@ function EventoCadastro(props){
                     <div className=' col-md-4'>
                         {
                             carregando >0 ? <div className="text-center" ><i className="fas fa-spin fa-spinner mt-3 fa-3x "></i></div>
-                            : <button onClick={props.match.params.id ? atualizar : cadastrar} type="button" className="btn btn-primary btn-lg btn-block mt-3 mb-3 ">{props.match.params.id ? 'Atualizar' : 'Cadastrar' }</button>
+                            : <button onClick={props.match.params.id ? atualizar : cadastrar} type="button" className="btn btn-primary btn-sm btn-block mt-3  ">{props.match.params.id ? 'Atualizar' : 'Cadastrar' }</button>
                         }
                     </div>
                 </form>

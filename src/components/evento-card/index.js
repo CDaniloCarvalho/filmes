@@ -28,7 +28,7 @@ function EventoCard({id, img, titulo, detalhes, visualizacoes}){
                     <div className="col-6">
                         <Link to={"/eventodetalhes/" + id} className="btn btn-sn btn-detalhes"> + Detalhes</Link>
                     </div>
-                    <div className="col-6 text-rigth">
+                    <div className="col-6 text-rigth text-light">
                         <i className="fas fa-eye"></i> <span>{visualizacoes}</span>
                     </div>
                     

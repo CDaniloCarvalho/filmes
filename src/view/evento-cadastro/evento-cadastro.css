@@ -2,5 +2,11 @@
     margin: auto;
     max-width: 800px;
     color:black;
-    opacity: 0.9;
+    opacity: 0.9.5;
+}
+
+@media (max-width: 767px) {
+    .tipo {
+        margin-top:15px;
+    }
 }
