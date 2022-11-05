@@ -10,7 +10,7 @@ function Navbar(){
             <nav className="navbar navbar-expand-lg ">
                 <div className="container-fluid ">
                     
-                <i class="fas fa-bahai text-white fa-2x "></i>
+                <i className="fas fa-bahai text-white fa-2x "></i>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <i className="fas fa-bars text-white"></i>
                     </button>

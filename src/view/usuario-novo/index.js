@@ -5,6 +5,7 @@ import './usuario-novo.css';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Footer from '../../components/footer';
+import Alertas from '../../components/alerta';
 
 
 function NovoUsuario() {
@@ -19,9 +20,11 @@ function NovoUsuario() {
     const fecharAlerta = () => {
         setAlertas(false)
     }
+    
 
     function cadastrar() {
         setCarregando(1);
+        setAlertas(false)
 
         setMsgTipo(null);
 
@@ -36,6 +39,7 @@ function NovoUsuario() {
         Firebase.auth().createUserWithEmailAndPassword(email, senha).then(() => {
             setCarregando(0);
             setMsgTipo('sucesso')
+            setMsg('Cadastro realizado com sucesso!')
             setAlertas(true)
             setTimeout(() => {<Redirect to='/' />},1000)
         }).catch(erro => {
@@ -69,28 +73,13 @@ function NovoUsuario() {
             { useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null }
 
                 <div className="container-fluid h-custom ">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
+                    <div className="row d-flex justify-content-center align-items-center ">
                     
-                    {/* Mensagem de erro ou sucesso*/}
-                    <div className="msg-login text-white text-center">
-                        {   alertas &&
-                            <div  className="position-fixed top-0 end-0 p-3 delay">
-                                {/* <div  class={`${ "bg-warning rounded p-2" }` }> */}
-                                <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>
-                                    
-                                    <div class="toast-body">
-                                        {msgTipo === 'erro' && <span><i className="fas fa-exclamation-triangle"></i> {msg} </span>}
-                                        {msgTipo === 'sucesso' && <span>Cadastro realizado com sucesso! &#128526;</span>}
-                                        <button onClick={fecharAlerta} type="button" class="btn-close"></button>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
+                    <Alertas msgTipo={msgTipo} msg={msg} alertas={alertas} fecharAlerta={fecharAlerta} />
 
-                        <div className="login_novo col-md-8 col-lg-6 col-xl-4 border rounded">
+                        <div className="login_novo  border rounded">
                             <form>
-                                <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
+                                <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-5">
                                     <h4>Criar conta</h4>
                                 </div>
 

@@ -4,11 +4,13 @@ import {useSelector} from 'react-redux';
 import Firebase from '../../config/firebase';
 import Navbar from '../../components/navbar';
 import { Redirect } from 'react-router';
+import Alertas from '../../components/alerta';
 
 function EventoCadastro(props){
 
     const [carregando, setCarregando] = useState();
     const [msgTipo, setMsgTipo] = useState();
+    const [msg, setMsg] = useState();
     const [titulo, setTitulo] = useState();
     const [tipo, setTipo] = useState();
     const [detalhes, setDetalhes] = useState();
@@ -39,15 +41,16 @@ function EventoCadastro(props){
             setFotoAtual(resultado.data().foto)
         })
     }
-    },[carregando])
+    },[props.match.params.id])
     
     function atualizar(){
         setMsgTipo(null);
         setCarregando(1);
 
-        if(!titulo, !tipo, !data, !hora, !detalhes, !fotoNova ){
+        if(!titulo || !tipo ||!data || !hora || !detalhes || !fotoNova ){
             setAlertas(true)
             setMsgTipo('erro');
+            setMsg('Você preencher os campos obrigatórios para realizar o cadastro!')
             setCarregando(0);
             
             
@@ -63,13 +66,15 @@ function EventoCadastro(props){
             }).then(() => {
                 setAlertas(true)
                 setMsgTipo('sucesso');
+                setMsg('Cadastro realizado com sucesso!')
                 setCarregando(0);
                 setTimeout(() => {
                     setRedirectFunc(true)
                 }, 5000);
-            }).catch(() =>{
+            }).catch(erro =>{
                 setAlertas(true)
                 setMsgTipo('erro');
+                setMsg('Verifique os campos digitados')
                 setCarregando(0);
             });
         }
@@ -81,7 +86,7 @@ function EventoCadastro(props){
         setMsgTipo(null);
         setCarregando(1);
 
-        if(!titulo, !tipo, !data, !hora, !detalhes, !fotoNova ){
+        if(!titulo || !tipo || !data || !hora || !detalhes || !fotoNova ){
             setMsgTipo('erro');
             setCarregando(0);
 
@@ -122,20 +127,9 @@ function EventoCadastro(props){
         <div>
             <Navbar/>
             {redirectFunc ? <Redirect to="/" /> : ''  }
-             {/* Mensagem de erro ou sucesso*/}
-             <div className=" text-white text-center ">
-                    {   alertas &&
-                        <div  className="position-fixed top-0 end-0 p-3 delay ">
-                            <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>                                
-                                <div class="toast-body">
-                                    {msgTipo === 'sucesso' && <span>Publicado com sucesso! &#128526;</span>}
-                                    {msgTipo === 'erro' && <span> Não foi possivel realizar a publicação! &#128546;</span>}
-                                    <button onClick={fecharAlerta} type="button" class="btn-close"></button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+             
+            <Alertas msgTipo={msgTipo} msg={msg} alertas={alertas} fecharAlerta={fecharAlerta} />
+
             <div className="aln col mx-auto border border-1 p-4 mt-4 rounded bg-white ">
 
                 <div className="row">
@@ -149,8 +143,8 @@ function EventoCadastro(props){
                     </div>
 
                     <div className="tipo col-md-6" >
-                        <label className=" ">Tipo do Evento:</label><span className="text-danger "> *</span>
-                        <select onChange={(e) => setTipo(e.target.value)}className="form-control" value={ tipo && tipo } rows="3">
+                        <label >Tipo do Evento:</label><span className="text-danger "> *</span>
+                        <select onChange={(e) => setTipo(e.target.value)} className="form-control" value={ tipo && tipo } rows="3">
                             <option disabled selected value>-- Selecione um Tipo --</option>
                             <option>Festa</option>
                             <option>Teatro</option>

@@ -9,12 +9,12 @@ function EventoCard({id, img, titulo, detalhes, visualizacoes}){
 
     useEffect(() => {
         firebase.storage().ref(`imagens/${img}`).getDownloadURL().then(url => setUrlImagem(url));
-    }, [urlImagem]);
+    }, [img]);
 
     return(
         <div className="col-md-3 col-sm-12 ">
         {
-            !img ? <div className="row  mt-3 "><div class="spinner-border text-danger mx-auto"></div></div>
+            !img ? <div className="row  mt-3 "><div className="spinner-border text-danger mx-auto"></div></div>
             :<img src={urlImagem} className="card-img-top img-cartao rounded" alt="Imagem"/>
         }
 

@@ -33,7 +33,7 @@ function EventoDetalhes(props){
         }else{
             Firebase.storage().ref(`imagens/${evento.foto}`).getDownloadURL().then(url => setUrlImg(url))
         }
-    },[])
+    },[evento.foto, carregando, props.match.params.id])
 
     return(
         <>
@@ -44,7 +44,7 @@ function EventoDetalhes(props){
             <div className="container-fluid main-detalhes">
 
                 {
-                carregando ? <div className="row  mt-5 "><div class="spinner-border text-danger mx-auto"></div></div>
+                carregando ? <div className="row  mt-5 "><div className="spinner-border text-danger mx-auto"></div></div>
                 : 
                 <div>
                     <div className="row" key={evento.id}>
@@ -93,7 +93,7 @@ function EventoDetalhes(props){
                     }
 
                     {
-                        usuarioLogado === evento.usuario  ?  <button onClick={remover} type="button" className=""><i class=" btn-exlcuir fas fa-trash-alt fa-3x"></i></button>
+                        usuarioLogado === evento.usuario  ?  <button onClick={remover} type="button" className=""><i className=" btn-exlcuir fas fa-trash-alt fa-3x"></i></button>
                         : ''
                     }
                         

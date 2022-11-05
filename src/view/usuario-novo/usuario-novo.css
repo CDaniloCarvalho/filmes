@@ -1,13 +1,4 @@
 
-.btn-cadastro{
-    color: #fff;
-}
-
-.msg_resposta{
-    position: absolute;
-    top: 120px;
-    margin: auto;
-}
 
 .btn-close{
     z-index: 4;
@@ -19,7 +10,7 @@
     max-width: 400px;
 }
 
-.btn-cadastro:hover{
-    background-color: #ac2626;
-   
+.main-novo{
+    padding: 120px  0;
 }
+
