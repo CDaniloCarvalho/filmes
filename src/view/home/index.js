@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar';
 import {useSelector} from 'react-redux';
 import firebase from '../../config/firebase';
 import EventoCard from '../../components/evento-card/';
-
+import Search from '../../components/pesquisa'
 function Home({match}){
 
     const [eventos, setEventos] = useState([]);
@@ -12,53 +12,52 @@ function Home({match}){
     let listaeventos = [];
     const usuarioEmail = useSelector(state => state.usuarioEmail);
 
+    const search = event => {
+        setPesquisa(event.target.value);
+    }    
+
     useEffect(() => {
-    
-    if(match.params.parametro){
+        if(match.params.parametro){
 
-        firebase.firestore().collection('Eventos').where('usuario','==',usuarioEmail).get().then(async (resultado) => {
-            await resultado.docs.forEach(doc =>{
-                if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
-                {
-                    listaeventos.push({
-                        id: doc.id,
-                        ...doc.data()
-                    })
-                }
-            })
-            
-            setEventos(listaeventos);
-        });
+            firebase.firestore().collection('Eventos').where('usuario','==',usuarioEmail).get().then(async (resultado) => {
+                await resultado.docs.forEach(doc =>{
+                    if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
+                    {
+                        listaeventos.push({
+                            id: doc.id,
+                            ...doc.data()
+                        })
+                    }
+                })
+                
+                setEventos(listaeventos);
+            });
 
-    }else{
+        }else{
 
-        firebase.firestore().collection('Eventos').get().then(async (resultado) => {
-            await resultado.docs.forEach(doc =>{
-                if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
-                {
-                    listaeventos.push({
-                        id: doc.id,
-                        ...doc.data()
-                    })
-                }
-            })
+            firebase.firestore().collection('Eventos').get().then(async (resultado) => {
+                await resultado.docs.forEach(doc =>{
+                    if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
+                    {
+                        listaeventos.push({
+                            id: doc.id,
+                            ...doc.data()
+                        })
+                    }
+                })
 
-            setEventos(listaeventos);
-        });
-    }
+                setEventos(listaeventos);
+            });
+        }
 
-    });
+    },[pesquisa]);
 
     return(
         <div className='main-home'>
-            <Navbar/>    
+            <Navbar search={search} />    
 
             <div className="row p-3 ">
                 <h3 className="text-center p-5 ">Publicações</h3>
-                <div className="input-group mb-3 barra-pesquisa">
-                    <input onChange={(e) => setPesquisa(e.target.value)} type="text" className="form-control text-center " placeholder="Pesquisar..."/>
-                    <span className="input-group-text"><i className="fa fa-search"></i></span>
-                </div>
             </div>
 
             <div className="row p-3">
