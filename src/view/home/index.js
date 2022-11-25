@@ -4,7 +4,6 @@ import Navbar from '../../components/navbar';
 import {useSelector} from 'react-redux';
 import firebase from '../../config/firebase';
 import EventoCard from '../../components/evento-card/';
-import Search from '../../components/pesquisa'
 function Home({match}){
 
     const [eventos, setEventos] = useState([]);
@@ -53,14 +52,14 @@ function Home({match}){
     },[pesquisa]);
 
     return(
-        <div className='main-home'>
+        <div className='container-fluid main-home'>
             <Navbar search={search} />    
 
-            <div className="row p-3 ">
-                <h3 className="text-center p-5 ">Publicações</h3>
+            <div className="row p-3 mx-auto ">
+                <h3 className="text-center p-4 ">Publicações</h3>
             </div>
 
-            <div className="row p-3">
+            <div className="row p-3 mx-auto">
                 {eventos.map (item => <EventoCard key={item.id} id={item.id} img={item.foto} titulo={item.titulo} detalhes={item.detalhes} visualizacoes={item.visualizacoes}/>) }
             </div>       
         </div>
