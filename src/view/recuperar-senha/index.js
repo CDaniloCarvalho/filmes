@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './recuperar-senha.css';
 import Firebase from '../../config/firebase';
 import 'firebase/auth';
-import Footer from '../../components/footer';
 import { useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import Alertas from '../../components/alerta';
 
 
-function RecuperarSenha(){
+function RecuperarSenha() {
 
     const [email, setEmail] = useState();
     const [msgTipo, setMsgTipo] = useState();
@@ -19,7 +19,7 @@ function RecuperarSenha(){
         setAlertas(false)
     }
 
-    function redefinir(){
+    function redefinir() {
         setCarregando(1)
 
         if (!email) {
@@ -32,7 +32,7 @@ function RecuperarSenha(){
         Firebase.auth().sendPasswordResetEmail(email).then(resultado => {
             setCarregando(0)
             setMsgTipo('sucesso')
-            setMsg('Enviamos um link no seu email para você redefinir a senha!' )
+            setMsg('Enviamos um link no seu email para você redefinir a senha!')
             setAlertas(true)
         }).catch(erro => {
             setCarregando(0)
@@ -42,42 +42,27 @@ function RecuperarSenha(){
         })
     }
 
-    return(
+    return (
         <>
 
-        <div className="container-flex main-login vh-100">
-            { useSelector(state=> state.usuarioLogado) > 0 ? <Redirect to='/' /> : null }
-            
+            <div className="container-flex main-login vh-100">
+                {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null}
+
                 <div className="container-fluid h-custom">
-                        {/* Mensagem de erro ou sucesso*/}
-                        <div className="msg-login text-white text-center ">
-                            {   alertas &&
-                                <div  className="position-fixed top-0 end-0 p-3 delay">
-                                    {/* <div  className={`${ "bg-warning rounded p-2" }` }> */}
-                                    <div  className={`rounded p-2 alert  alert-${ msgTipo === 'erro' ?  'warning' : 'success'}`}>
-                                        
-                                        <div className="toast-body">
-                                            {msgTipo === 'erro' && <span><i className="fas fa-exclamation-triangle"></i> {msg} </span>}
-                                            {msgTipo === 'sucesso' && <span>{msg} &#128526;</span>}
-                                            <button onClick={fecharAlerta} type="button" className="btn-close"></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    <div className="row d-flex justify-content-center align-items-center h-100">
+                    <Alertas msgTipo={msgTipo} msg={msg} alertas={alertas} fecharAlerta={fecharAlerta} />
+                    <div className="position-absolute top-50 start-50 translate-middle">
                         <div className="login_form col-md-8 col-lg-6 col-xl-4  border rounded">
-                            <form>
+                            <form className="py-3">
                                 <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                     <h4>Recuperar Senha</h4>
                                 </div>
 
                                 {/* Email input */}
                                 <div className="form-outline mb-4">
-                                    <input type="email" id="form3Example3" className="form-control"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Digite seu email" />
                                     <label className="form-label" htmlFor="form3Example3">Email</label>
+                                    <input type="email" id="form3Example3" className="form-control"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Digite seu email" />
                                 </div>
 
                                 <div className="d-flex justify-content-between align-items-center">
@@ -86,23 +71,22 @@ function RecuperarSenha(){
                                 <div className="text-center text-lg-start mt-4 pt-2">
                                     <button type="button" className="btn btn-primary"
                                         onClick={redefinir}
-                                        style={{paddingLeft: "2.5rem", paddingRight: "2.5rem"}}>
+                                        style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}>
                                         {
                                             carregando ? <span>
                                                 <i className="fas fa-spin fa-spinner "></i> Carregando
                                             </span>
-                                            : <span>Recuperar Senha</span>
+                                                : <span>Recuperar Senha</span>
                                         }
                                     </button>
-                                    <p className="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta?  
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Não tem uma conta?
                                         <Link to="novousuario" className="link-danger mx-1">Criar Conta</Link>
                                     </p>
                                 </div>
                             </form>
-                        </div> 
+                        </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         </>
     )
