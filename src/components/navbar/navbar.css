@@ -14,15 +14,23 @@
 .search{
     display: block;
 }
-.menu{
-    background-color:#2c3d6bbb;
+.menu {
+    background-color: #8894b4bb;
     color: white;
     padding: 10px 12px;
-}
-
-.menu:hover{
-    background-color: #495987bb;
-}
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .menu:hover {
+    background-color: #586ea4bb;
+  }
+  
 .navbar-nav{
     padding: 0;
 }

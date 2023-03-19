@@ -50,7 +50,7 @@ function EventoCadastro(props){
         if(!titulo || !tipo ||!data || !hora || !detalhes || !fotoNova ){
             setAlertas(true)
             setMsgTipo('erro');
-            setMsg('Você preencher os campos obrigatórios para realizar o cadastro!')
+            setMsg('Você precisa preencher os campos obrigatórios!')
             setCarregando(0);
             
             
@@ -88,6 +88,7 @@ function EventoCadastro(props){
 
         if(!titulo || !tipo || !data || !hora || !detalhes || !fotoNova ){
             setMsgTipo('erro');
+            setMsg('Você precisa preencher os campos obrigatórios!')
             setCarregando(0);
 
         }else{

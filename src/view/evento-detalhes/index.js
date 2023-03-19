@@ -41,50 +41,34 @@ function EventoDetalhes(props){
 
             {excluir  ? <Redirect to='/' /> : null}
 
-            <div className="container-fluid main-detalhes">
+            <div className="container-fluid main-detalhes rounded">
 
                 {
                 carregando ? <div className="row  mt-5 "><div className="spinner-border text-danger mx-auto"></div></div>
                 : 
                 <div>
-                    <div className="row" key={evento.id}>
-                        <img src={urlImg} className="img-banner" alt="banner"/>
-
+                    <div className="row mt-2 p-2" key={evento.id}>
+                        <div className="col-4">
+                            <img src={urlImg} className="img-banner rounded z-3" alt="banner"/>
+                        </div>
+                        <div className="col-8">
+                            <h3 className='text-center mt-5 text-shadow'><strong>{evento.titulo}</strong></h3>
+                        
+                            <div className="row  mt-5">
+                            <div className="col-12 text-center">
+                                <h5>Detalhes</h5>
+                            </div>
+                            
+                            <div className="col-12 text-center overflow-hidden">
+                                <p>{evento.detalhes}</p>
+                            </div>
+                            </div>    
+                        </div>
                         <div className="col-12 text-right mt-1 visualizacoes">
                             <i className="fas fa-eye"></i><span>{evento.visualizacoes + 1}</span>
                         </div>
-                        <h3 className='text-center mt-5 text-light text-shadow'><strong>{evento.titulo}</strong></h3>
                     </div>
 
-                    <div className="row mt-5 d-flex justify-content-around" >
-                        <div className="col-md-3 col-sm-12 box-info p-3 my-2 rounded">
-                            <i className="fas fa-ticket-alt fa-2x m-1"></i>
-                            <h5><strong>Tipo</strong></h5>
-                            <span className="mt-3">{evento.tipo}</span>
-                        </div>
-
-                        <div className="col-md-3 col-sm-12 box-info p-3 my-2 rounded">
-                            <i className="fas fa-calendar-alt fa-2x m-1"></i>
-                            <h5><strong>Data</strong></h5>
-                            <span className="mt-3">{evento.data}</span>
-                        </div>
-
-                        <div className="col-md-3 col-sm-12 box-info p-3 my-2 rounded">
-                            <i className="fas fa-clock fa-2x m-1"></i>
-                            <h5><strong>Hora</strong></h5>
-                            <span className="mt-3">{evento.hora}</span>
-                        </div>
-                    </div>
-
-                    <div className="row box-detalhes mt-5">
-                        <div className="col-12 text-center text-light">
-                            <h5><strong>Detalhes</strong></h5>
-                        </div>
-                        
-                        <div className="col-12 text-center text-light">
-                            <p>{evento.detalhes}</p>
-                        </div>
-                    </div>    
 
                     {
                         usuarioLogado === evento.usuario  ? 

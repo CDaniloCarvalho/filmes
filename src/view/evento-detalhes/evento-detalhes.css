@@ -1,10 +1,19 @@
 .text-shadow {
-    text-shadow: 2px 2px #575656;
+    text-shadow: 2px 2px #5756567d;
   }
 .img-banner{
-    width: 100%;
+    width: auto;
     min-height: 300px;
     max-height: 350px;
+    z-index: 10;
+}
+
+.main-detalhes{
+    background-color:#dee1e188;
+    height: auto;
+    min-height: 500px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .box-info{

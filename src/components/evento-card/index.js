@@ -19,8 +19,8 @@ function EventoCard({id, img, titulo, detalhes, visualizacoes}){
         }
 
             <div className="card-body">
-                <h1>{titulo}</h1>
-                <p className="card-text text-justify">
+                <h1 className='overflow-hidden text-nowrap'>{titulo}</h1>
+                <p className="card-text text-justify overflow-hidden ">
                     {detalhes}
                 </p>
 
