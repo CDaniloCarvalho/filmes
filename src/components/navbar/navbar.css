@@ -1,5 +1,6 @@
 .navbar{
     background-color:#1a274cbb;
+    padding: 5px 10px;;
 }
 
 .nav-item a{
@@ -8,7 +9,7 @@
 }
 
 .nav-item a:hover{
-    color: #bebfc0;;
+    color: #bebfc0;
 }
 
 .search{

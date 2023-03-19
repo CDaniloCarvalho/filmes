@@ -147,10 +147,10 @@ function EventoCadastro(props){
                         <label >Tipo do Evento:</label><span className="text-danger "> *</span>
                         <select onChange={(e) => setTipo(e.target.value)} className="form-control" value={ tipo && tipo } rows="3">
                             <option disabled selected value>-- Selecione um Tipo --</option>
-                            <option>Festa</option>
-                            <option>Teatro</option>
-                            <option>Show</option>
-                            <option>Evento</option>
+                            <option>Ação</option>
+                            <option>Comedia</option>
+                            <option>Terror</option>
+                            <option>Ficção</option>
                         </select>
                     </div>    
 

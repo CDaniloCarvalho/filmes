@@ -41,45 +41,48 @@ function EventoDetalhes(props){
 
             {excluir  ? <Redirect to='/' /> : null}
 
-            <div className="container-fluid main-detalhes rounded">
+            <div className="container-fluid p-3">
 
                 {
                 carregando ? <div className="row  mt-5 "><div className="spinner-border text-danger mx-auto"></div></div>
                 : 
-                <div>
-                    <div className="row mt-2 p-2" key={evento.id}>
-                        <div className="col-4">
-                            <img src={urlImg} className="img-banner rounded z-3" alt="banner"/>
+                <div className="container-fluid main-detalhes rounded p-3">
+
+                    <div className="row mt-2 " key={evento.id}>
+                        <div className="col-lg-6">
+                            <img src={urlImg} className="img-banner rounded d-flex justify-content-center" alt="banner"/>
                         </div>
-                        <div className="col-8">
+                        <div className="col-lg-6">
                             <h3 className='text-center mt-5 text-shadow'><strong>{evento.titulo}</strong></h3>
                         
-                            <div className="row  mt-5">
-                            <div className="col-12 text-center">
-                                <h5>Detalhes</h5>
-                            </div>
-                            
-                            <div className="col-12 text-center overflow-hidden">
-                                <p>{evento.detalhes}</p>
-                            </div>
+                            <div className="mt-5">
+                                <div className=" text-center">
+                                    <h5>Detalhes</h5>
+                                </div>
+                                
+                                <div className=" text-center overflow-hidden">
+                                    <p>{evento.detalhes}</p>
+                                </div>
                             </div>    
                         </div>
-                        <div className="col-12 text-right mt-1 visualizacoes">
-                            <i className="fas fa-eye"></i><span>{evento.visualizacoes + 1}</span>
+                        <div className="col-12 text mt-1 visualizacoes">
+                            <i className="fas fa-eye mx-1"></i><span>{evento.visualizacoes + 1}</span>
+                        </div>
+
+                        <div className='col-lg-12 d-flex d-flex justify-content-between mt-2'>
+
+                            {
+                            usuarioLogado === evento.usuario  ? 
+                            <Link to={`/editarevento/${props.match.params.id}`} className="btn-editar ma-0"><i className="fas fa-pen-square fa-3x"></i></Link>    
+                                :''   
+                            }
+
+                            {
+                                usuarioLogado === evento.usuario  ?  <label onClick={remover} type="button" className=" ma-0"><i className="align-content-end btn-exlcuir fas fa-trash-alt fa-3x"></i></label>
+                                : ''
+                            }
                         </div>
                     </div>
-
-
-                    {
-                        usuarioLogado === evento.usuario  ? 
-                        <Link to={`/editarevento/${props.match.params.id}`} className="btn-editar"><i className="fas fa-pen-square fa-3x"></i></Link>    
-                        :''   
-                    }
-
-                    {
-                        usuarioLogado === evento.usuario  ?  <button onClick={remover} type="button" className=""><i className=" btn-exlcuir fas fa-trash-alt fa-3x"></i></button>
-                        : ''
-                    }
                         
                 </div>
                 }

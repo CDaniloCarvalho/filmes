@@ -28,12 +28,10 @@ function Home({match}){
                         })
                     }
                 })
-                
                 setEventos(listaeventos);
             });
 
         }else{
-
             firebase.firestore().collection('Eventos').get().then(async (resultado) => {
                 await resultado.docs.forEach(doc =>{
                     if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
@@ -44,25 +42,28 @@ function Home({match}){
                         })
                     }
                 })
-
                 setEventos(listaeventos);
             });
         }
 
     },[pesquisa]);
 
-    return(
-        <div className='container-fluid main-home'>
+    return(  
+        <div class="container-fluid">
             <Navbar search={search} />    
-
-            <div className="row p-3 mx-auto ">
-                <h3 className="text-center p-4 ">Publicações</h3>
+            <div class="row p-2 mx-auto">
+                <div class="col-lg-12 mx-auto ">
+                    <div class="main-home rounded">
+                        <div className="row p-3 mx-auto ">
+                            <h3 className="text-center p-4 ">Filmes</h3>
+                        </div>
+                        <div className="row p-3 mx-auto">
+                            {eventos.map (item => <EventoCard key={item.id} id={item.id} img={item.foto} titulo={item.titulo} detalhes={item.detalhes} visualizacoes={item.visualizacoes}/>) }
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div className="row p-3 mx-auto">
-                {eventos.map (item => <EventoCard key={item.id} id={item.id} img={item.foto} titulo={item.titulo} detalhes={item.detalhes} visualizacoes={item.visualizacoes}/>) }
-            </div>       
-        </div>
+        </div>   
     )
 };
 
