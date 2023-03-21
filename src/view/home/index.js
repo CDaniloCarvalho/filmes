@@ -49,11 +49,11 @@ function Home({match}){
     },[pesquisa]);
 
     return(  
-        <div class="container-fluid">
+        <div className="container-fluid">
             <Navbar search={search} />    
-            <div class="row p-2 mx-auto">
-                <div class="col-lg-12 mx-auto ">
-                    <div class="main-home rounded">
+            <div className="lista-filmes row p-2 mx-auto">
+                <div className="col-lg-12 mx-auto ">
+                    <div className="main-home rounded">
                         <div className="row p-3 mx-auto ">
                             <h3 className="text-center p-4 ">Filmes</h3>
                         </div>

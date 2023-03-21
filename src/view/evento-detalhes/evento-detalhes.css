@@ -10,31 +10,27 @@
 }
 
 .main-detalhes{
-    background-color: rgba(6, 6, 6, 0.598);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.8);
     background-size: cover;
-    background-color: #dee1e188;
     padding: 10px;
     margin-top: 20px;
+    color: #333;
+    text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff;
 }
 
 .btn-editar{
-    color: white;
     transition: .3s ease-in;
 }
 
 .btn-exlcuir{
-    color: white;
     transition: .3s ease-in;
-}
-
-.btn-editar:hover{
-    color: #bebfc0;
+    color:rgb(158, 39, 39);
 }
 
 .btn-exlcuir:hover{
-    color: #bebfc0;
+    color:rgb(202, 35, 35);
 }
+
 
 .visualizacoes{
     color: white;
