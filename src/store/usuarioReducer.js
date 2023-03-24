@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    usuarioEmail: '',
+    usuarioEmail: null,
     usuarioLogado: 0,
 }
 
