@@ -1,3 +1,4 @@
+
 .btn-enviar{
 background-color: #1A4C47;
     color:#fff;
@@ -6,3 +7,34 @@ background-color: #1A4C47;
 .btn-enviar:hover{
     background-color: #ac2626;
 }
+
+.msg_resposta{
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+}
+
+.login_form{
+    background-color: rgba(40, 40, 40, 0.564);
+    padding: 30px;
+    width: 400px;
+    margin: auto;
+    color:white;
+}
+
+.container-flex{
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .login_form {
+      width: 100%;
+      max-width: none;
+      font-size: 14px;
+    }
+
+    .login_form button {
+        margin-top: 10px;
+    }
+}
+  
