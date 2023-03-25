@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './recuperar-senha.css';
+import '../../index.css';
 import Firebase from '../../config/firebase';
 import 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import Alertas from '../../components/alerta';
-
 
 function RecuperarSenha() {
 
@@ -44,7 +43,6 @@ function RecuperarSenha() {
 
     return (
         <>
-
 
             <div className="container">
                 {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null}

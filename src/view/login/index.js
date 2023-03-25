@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './login.css';
 import '../../index.css';
 import { Link, Redirect } from 'react-router-dom';
 import Firebase from '../../config/firebase';
@@ -36,13 +35,13 @@ function Login() {
             return;
         }
 
-        Firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
+        Firebase.auth().signInWithEmailAndPassword(email, senha).then(() => {
             setCarregando(0);
             setTimeout(() => {
                 dispatch({ type: 'LOG_IN', usuarioEmail: email });
-            }, 2000);
+            }, 1000);
 
-        }).catch(erro => {
+        }).catch(() => {
             setCarregando(0);
             setMsgTipo('erro');
             setMsg('Verifique o email e senha digitados')
@@ -52,7 +51,7 @@ function Login() {
 
     return (
 
-        <div className="container ">
+        <div className="container p-2">
             {
                 useSelector(state=> state.usuarioLogado) > 0 ? <Redirect to='/' /> : null
             }  

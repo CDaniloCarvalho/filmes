@@ -13,6 +13,14 @@ function EventoDetalhes(props){
     const usuarioLogado = useSelector(state =>state.usuarioEmail);
     const [carregando, setCarregando] = useState(1);
     const [excluir, setExcluir] = useState(0);
+    const [visualizarTrailer, setVisualizarTrailer] = useState(false)
+
+    const abrirFecharVideo = () => {
+        setVisualizarTrailer(!visualizarTrailer)
+    }
+
+    const videoEmbedCode = "https://www.youtube.com/embed/rR52uvkU4JE";
+
 
     function remover (){
         Firebase.firestore().collection('Eventos').doc(props.match.params.id).delete().then(() =>{
@@ -43,6 +51,7 @@ function EventoDetalhes(props){
 
             <div className="container-fluid p-3">
 
+
                 {
                 carregando ? <div className="row  mt-5 "><div className="spinner-border text-primary mx-auto"></div></div>
                 : 
@@ -68,8 +77,30 @@ function EventoDetalhes(props){
                                 <div className=" text-center overflow-hidden mt-4">
                                     <p>{evento.detalhes}</p>
                                 </div>
+
+                                <div className=" text-center overflow-hidden mt-4">
+                                    <button className='btn-trailer btn btn-secondary btn-sm ' onClick={abrirFecharVideo}>Ver trailer</button>
+                                </div>
                             </div>    
                         </div>
+
+                        
+                        {visualizarTrailer && 
+                            <><div className='modal-container row' onClick={abrirFecharVideo}>
+                            <label className='btn-fechar' title='Fechar' onClick={abrirFecharVideo}>&#10006;</label>
+
+
+                            <div className="trailer">
+                                    <iframe
+                                        src={evento.trailer + "?autoplay=1&"}
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                    />
+                                </div>
+                            </div> 
+                        </>}
 
                         <div className='col-lg-12 d-flex d-flex justify-content-between mt-2'>
 
