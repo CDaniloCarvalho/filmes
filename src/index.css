@@ -12,10 +12,12 @@ body{
 }
 
 .login_form {
+    padding: 30px;
     margin: auto;
     background-color: rgba(40, 40, 40, 0.564);
     width: 500px;
     max-width: 95vw;
+    top: 120px;
     position: absolute;
     left: 0px;
     right: 0px;
@@ -86,6 +88,7 @@ body{
 @media (max-width: 768px) {
     .login_form {
       font-size: 14px;
+      top: 40px
     }
 
     .login_form button {
