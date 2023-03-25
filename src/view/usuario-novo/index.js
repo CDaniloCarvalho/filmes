@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Firebase from '../../config/firebase';
 import 'firebase/auth';
-import './usuario-novo.css';
+import '../../index.css';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Alertas from '../../components/alerta';
@@ -68,12 +68,12 @@ function NovoUsuario() {
 
     return (
 
-        <div className='main-novo container-flex vh-100'>
+        <div className='container'>
             { useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null }
 
             <Alertas msgTipo={msgTipo} msg={msg} alertas={alertas} fecharAlerta={fecharAlerta} />
-            <div className="position-absolute top-50 start-50 translate-middle">
-                    <div className="login_novo  border rounded">
+            
+                    <div className="login_form border rounded">
                         <form>
                             <div className=" mb-4">
                                 <h4>Criar conta</h4>
@@ -113,7 +113,7 @@ function NovoUsuario() {
                             </div>
                         </form>
                     </div>
-                </div>
+               
         </div>
         
     )

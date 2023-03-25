@@ -14,6 +14,7 @@ function EventoCadastro(props){
     const [titulo, setTitulo] = useState();
     const [tipo, setTipo] = useState();
     const [detalhes, setDetalhes] = useState();
+    const [trailer, setTrailer] = useState();
     const [fotoAtual, setFotoAtual] = useState();
     const [fotoNova, setFotoNova] = useState();
     const [alertas, setAlertas] = useState();
@@ -34,6 +35,7 @@ function EventoCadastro(props){
             setTitulo(resultado.data().titulo)
             setTipo(resultado.data().tipo)
             setDetalhes(resultado.data().detalhes)
+            setTrailer(resultado.data().trailer)
             setFotoAtual(resultado.data().foto)
         })
     }
@@ -56,6 +58,7 @@ function EventoCadastro(props){
                 titulo:titulo,
                 tipo:tipo,
                 detalhes:detalhes,
+                trailer:trailer,
                 foto: fotoNova ?  fotoNova.name : fotoAtual
             }).then(() => {
                 setAlertas(true)
@@ -91,6 +94,7 @@ function EventoCadastro(props){
                     titulo:titulo,
                     tipo:tipo,
                     detalhes:detalhes,
+                    trailer:trailer,
                     usuario: usuarioEmail,
                     visualizacoes: 0,
                     foto: fotoNova.name,
@@ -150,12 +154,17 @@ function EventoCadastro(props){
 
                     <div className=" mt-3 col-md-12">
                         <label>Detalhes:</label><span className="text-danger "> *</span>
-                        <textarea onChange={(e) => setDetalhes(e.target.value)} className="form-control" value={ detalhes } rows="3"/>
+                        <textarea onChange={(e) => setDetalhes(e.target.value)} className="form-control" value={ detalhes } />
                     </div>
 
-                    <div className=" mt-3 col-md-12 mb-2">
+                    <div className=" mt-3 col-md-6 mb-2">
                         <label>Foto</label><span className="text-danger "> *</span>
                         <input onChange={(e) => setFotoNova(e.target.files[0])} type="file" className="form-control col-md-4"/>
+                    </div>
+
+                    <div className=" mt-3 col-md-6">
+                        <label>Link trailer:</label><span className="text-danger "> *</span>
+                        <input onChange={(e) => setTrailer(e.target.value)} className="form-control" value={ trailer } />
                     </div>
 
                     <div className=' col-md-12 mt-5 sticky-bottom'>
