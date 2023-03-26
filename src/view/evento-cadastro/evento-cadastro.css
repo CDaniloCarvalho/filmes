@@ -1,10 +1,19 @@
 .main-cadastrar{
     background-size: cover;
     background-color: rgba(255, 255, 255, 0.8);    padding: 10px;
-    margin-top: 20px;
-    min-height: 80vh;
+    min-height: 75vh;
     text-decoration: none;
     margin: auto;
     max-width: 90vw;
+    margin-bottom: 10px;
+}
+
+.btn-cadastrar{
+    margin-top: 100px;
+}
+
+.botoes-editar {
+    position: relative;
+    top: 70px;
 }
 

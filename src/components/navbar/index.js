@@ -6,8 +6,7 @@ import Search from '../pesquisa';
 
 function Navbar({search}){
     const dispatch = useDispatch();
-    const [nav, setNav] = useState(true)
-    // recuperando dados da sessão
+    const [nav, setNav] = useState(false)
     const usuario = JSON.parse(localStorage.getItem('persist:filmes'));
     console.log(usuario.usuarioLogado);
 
@@ -15,30 +14,30 @@ function Navbar({search}){
 
         <>  
         {/* {   useSelector(state=> state.usuarioLogado) > 1 && <Redirect to="/login" />   } */}
-            <nav className="navbar navbar-expand-lg">
-                <div className="container-fluid">            
-                    <button onClick={() => setNav(!nav)} className="menu rounded " type="button">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div className="navbar-collapse" >
-                        <ul className="navbar-nav mx-auto  mb-lg-0">
-                            {nav ? <>       
-                                <li className="nav-item me-5"><Link className="nav-link " to="/">Início</Link></li>
-                                {usuario.usuarioLogado !== "0" ? 
-                                    <><li className="nav-item me-5"><Link className="nav-link " to="/eventocadastro">Publicar</Link></li>            
-                                    <li className="nav-item me-5"><Link className="nav-link " to="/eventos/meus">Minhas publicações</Link></li>            
-                                    <li className="nav-item me-5"><Link className="nav-link " to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>Sair</Link></li> </> 
-                                    :<li className="nav-item me-5"><Link className="nav-link " to="/login">Logar</Link></li> 
-                                }  
-                            </>: ''}
-                        </ul>
-                        <span className={`search col-3 ${nav && 'd-block'}`}>
-                            <Search search={search}  />
-                        </span>
-                    </div>
-                </div>
-            </nav>
+            <div className="menu">
+                         
+                <button onClick={() => setNav(!nav)} className="menu-btn rounded mb-2 " type="button">
+                    <span className="fs-2">&#9776;</span>
+                </button>
+
+                <ul class="menu-superior">
+                    <li className='links '><Link className="menu-link" to="/">Início</Link></li>
+                    <li className='links '><Link className="menu-link" to="/eventocadastro">Publicar</Link></li>
+                    <li className='links'><Link className="menu-link" to="/eventos/meus">Minhas publicações</Link></li>
+                    <li className={`search`}> <Search search={search} /></li>
+                    <li className='sair'><Link to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>&#10095; Sair</Link></li> 
+                </ul>
+            
+                <ul className="menu-responsivo">    
+                    <li className={`search`}> <Search search={search} /></li>  
+                    <li className='sair'><Link to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>&#10095; Sair</Link></li>
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'} `}><Link className="n-link " to="/">Início</Link></li>
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/eventocadastro">Publicar</Link></li>            
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/eventos/meus">Minhas publicações</Link></li>            
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>Sair</Link></li> 
+                </ul> 
+                                         
+            </div>
         </> 
     )
 }

@@ -12,8 +12,8 @@
 .main-detalhes{
     background-color: rgba(255, 255, 255, 0.8);
     background-size: cover;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 80px 50px;
+    min-height: 80vh;
     color: #333;
     text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff;
 }
@@ -34,4 +34,11 @@
 
 .visualizacoes{
     color: white;
+}
+
+
+@media (max-width: 600px) {
+    .main-detalhes{
+        padding: 10px;
+    }
 }

@@ -55,14 +55,13 @@ function EventoDetalhes(props){
                 {
                 carregando ? <div className="row  mt-5 "><div className="spinner-border text-primary mx-auto"></div></div>
                 : 
-                <div className=" main-detalhes rounded p-3">
+                <div className=" main-detalhes rounded ">
 
                     <div className="row mt-2 " key={evento.id}>
                         <div className="col-lg-6">
                             <img src={urlImg} className="img-banner  rounded d-flex justify-content-center" alt="banner"/>
                             <div className='text-center mt-2'>
-
-                            <i className="fas fa-eye mx-1"></i><span>{evento.visualizacoes + 1}</span>
+                                <i className="fas fa-eye mx-1"></i><span>{evento.visualizacoes + 1}</span>
                             </div>
                         </div>
                         
@@ -83,7 +82,6 @@ function EventoDetalhes(props){
                                 </div>
                             </div>    
                         </div>
-
                         
                         {visualizarTrailer && 
                             <><div className='modal-container row' onClick={abrirFecharVideo}>
@@ -91,18 +89,21 @@ function EventoDetalhes(props){
 
 
                             <div className="trailer">
+                                <div className="trailer">
                                     <iframe
                                         src={evento.trailer + "?autoplay=1&"}
                                         title="YouTube video player"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                        allowFullScreen
                                     />
                                 </div>
+                            </div>
+
                             </div> 
                         </>}
 
-                        <div className='col-lg-12 d-flex d-flex justify-content-between mt-2'>
+                        <div className='botoes-editar col-lg-12 d-flex justify-content-between'>
 
                             {
                             usuarioLogado === evento.usuario  ? 
@@ -111,7 +112,7 @@ function EventoDetalhes(props){
                             }
 
                             {
-                                usuarioLogado === evento.usuario  ?  <label onClick={remover} type="button" className=" ma-0 hover text-danger"><i className=" align-content-end btn-exlcuir fas fa-trash-alt fa-2x"></i></label>
+                                usuarioLogado === evento.usuario  ?  <label onClick={remover} type="button" className=" ma-0 hover text-danger mb-1"><i className=" align-content-end btn-exlcuir fas fa-trash-alt fa-2x"></i></label>
                                 : ''
                             }
                         </div>
