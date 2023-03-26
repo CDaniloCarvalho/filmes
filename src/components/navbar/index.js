@@ -1,42 +1,59 @@
-import React from 'react';
+import React, {  useState } from 'react';
 import './navbar.css';
+import { useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import Search from '../pesquisa';
 
-
-function Navbar(){
+function Navbar({search}){
     const dispatch = useDispatch();
-    return(
-            <nav className="navbar navbar-expand-lg ">
-                <div className="container-fluid ">
-                    
-                <i class="fas fa-bahai text-white fa-2x "></i>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <i className="fas fa-bars text-white"></i>
-                    </button>
-                    <div className="collapse navbar-collapse " id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item "><Link className="nav-link " aria-current="page" to="/">Início</Link></li>
-                            
-                            { 
-                                    useSelector(state=> state.usuarioLogado) > 0 ?
-                                <>
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventocadastro">Publicar Eventos</Link></li>            
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/eventos/meus">Meus Eventos</Link></li>            
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" onClick={()=>   dispatch({type:'LOG_OUT'})}>Sair</Link></li>  
-                                </>
-                                    :
-                                <>
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/novousuario">Cadastrar</Link></li>            
-                                    <li className="nav-item"><Link className="nav-link " aria-current="page" to="/login">Login</Link></li>            
-                                </>
-                                    
-                            }
+    const [nav, setNav] = useState(false)
+    const usuario = JSON.parse(localStorage.getItem('persist:filmes'));
+    console.log(usuario.usuarioLogado);
 
-                        </ul>
-                    </div>
-                </div>
-        </nav>
+    return(
+
+        <>  
+            { usuario.usuarioLogado === '1' ? <div className="menu">
+                         
+                <button onClick={() => setNav(!nav)} className="menu-btn rounded mb-2 " type="button">
+                    <span className="fs-2">&#9776;</span>
+                </button>
+
+                <ul class="menu-superior">
+                    <li className='links'><Link className="menu-link" to="/">Início</Link></li>
+                    <li className='links'><Link className="menu-link" to="/cadastro">Publicar</Link></li>
+                    <li className='links'><Link className="menu-link" to="/home/meus">Minhas publicações</Link></li>
+                    <li className={`search`}> <Search search={search} /></li>
+                    <li className='sair'><Link to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>&#10095; Sair</Link></li> 
+                </ul>
+            
+                <ul className="menu-responsivo">    
+                    <li className={`search`}> <Search search={search} /></li>  
+                    <li className='sair'><Link to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>&#10095; Sair</Link></li>
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'} `}><Link className="n-link " to="/">Início</Link></li>
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/cadastro">Publicar</Link></li>            
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/home/meus">Minhas publicações</Link></li>            
+                </ul> 
+                                         
+            </div> :
+            <div className="menu">
+                         
+                <button onClick={() => setNav(!nav)} className="menu-btn rounded mb-2 " type="button">
+                    <span className="fs-2">&#9776;</span>
+                </button>
+                <ul class="menu-superior">
+                    <li className='links'><Link className="menu-link" to="/">Início</Link></li>
+                    <li className='links'><Link className="menu-link" to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}> Logar</Link></li> 
+                </ul>
+            
+                <ul className="menu-responsivo">    
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'} `}><Link className="n-link" to="/">Início</Link></li>            
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'} `}><Link  className="n-link" to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>Logar</Link></li>
+                </ul> 
+                                         
+            </div>
+            }
+        </> 
     )
 }
 

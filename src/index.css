@@ -1,0 +1,117 @@
+body{
+    background-image: url('../src/img/img-fundo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width:  100%;
+    height: 100%;
+    min-height: 100vh;
+    font-family: 'Helvetica', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.login_form {
+    padding: 30px;
+    margin: auto;
+    background-color: rgba(40, 40, 40, 0.799);
+    width: 500px;
+    max-width: 95vw;
+    top: 120px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    color: white;
+}
+
+.btn-trailer{
+    cursor: pointer;
+}
+
+.btn-fechar{
+    color:rgb(170, 22, 22);
+    cursor: pointer;
+    font-size: 30px;
+    position: fixed;
+    top: 0;
+    z-index: 1000; 
+}
+
+.btn-fechar:hover{
+    color:rgb(174, 60, 60);
+    font-size: 31px;
+}
+
+.btn-trailer:hover{
+    color:rgb(190, 187, 187);
+}
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.79);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+.trailer {
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  background-color: #000;
+  margin: auto;
+}
+
+.trailer iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.trailer iframe video {
+  width: 100%;
+  height: 100%;
+}
+
+.link{
+  text-decoration: none;
+  color:white;
+}
+
+.inicio a{
+  text-decoration: none;
+  color:white;
+  font-size: 25px;
+}
+
+.inicio {
+  list-style: none;
+  box-shadow: #000 1px 1px 1px 1px;
+}
+
+.erro404{
+  color:rgb(192, 186, 186);
+  text-shadow: #000 2px 2px 2px;
+}
+  
+@media (max-width: 768px) {
+    .login_form {
+      font-size: 14px;
+      top: 40px;
+    }
+  
+    .login_form button {
+      margin-top: 10px;
+    }
+  
+    .trailer {
+      width: 100%;
+      height: 100vh;
+    }
+}
+  
+  
