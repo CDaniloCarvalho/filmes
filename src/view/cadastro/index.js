@@ -6,7 +6,7 @@ import Navbar from '../../components/navbar';
 import { Redirect } from 'react-router';
 import Alertas from '../../components/alerta';
 
-function EventoCadastro(props){
+function Cadastro(props){
 
     const [carregando, setCarregando] = useState();
     const [msgTipo, setMsgTipo] = useState();
@@ -128,8 +128,6 @@ function EventoCadastro(props){
             
             
         });
-          
-
     }
 
     return(
@@ -208,4 +206,4 @@ function EventoCadastro(props){
     )
 }
 
-export default EventoCadastro;
+export default Cadastro;
