@@ -3,7 +3,7 @@ import './home.css';
 import Navbar from '../../components/navbar';
 import {useSelector} from 'react-redux';
 import firebase from '../../config/firebase';
-import EventoCard from '../../components/evento-card/';
+import EventoCard from '../../components/card';
 function Home({match}){
 
     const [eventos, setEventos] = useState([]);
