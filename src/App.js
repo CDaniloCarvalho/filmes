@@ -7,10 +7,8 @@ import Home from './view/home';
 import Login from './view/login';
 import NovoUsuario from './view/usuario-novo';
 import recuperarSenha from './view/recuperar-senha';
-import EventoCadastro from './view/evento-cadastro';
-import EventoDetalhes from './view/evento-detalhes';
-
-
+import EventoCadastro from './view/cadastro';
+import EventoDetalhes from './view/detalhes';
 
 function App() {
   return (

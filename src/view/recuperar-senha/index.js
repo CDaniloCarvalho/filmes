@@ -13,31 +13,46 @@ function RecuperarSenha() {
     const [msg, setMsg] = useState();
     const [alertas, setAlertas] = useState();
     const [carregando, setCarregando] = useState();
+    const [errors, setErrors] = useState({});
+
+    const validate = () => {
+        let newErrors = {};
+        if (!email) newErrors.email = "Email é obrigatório";        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const fecharAlerta = () => {
         setAlertas(false)
     }
 
     function redefinir() {
-        setCarregando(1)
-
-        if (!email) {
-            setCarregando(0);
-            setMsgTipo('erro')
-            setMsg('Você precisa informar o email!')
-            setAlertas(true)
-            return;
-        }
-        Firebase.auth().sendPasswordResetEmail(email).then(resultado => {
+        setAlertas(false)
+        setMsgTipo(null);
+        if (!validate()) return; 
+            setCarregando(1)
+        Firebase.auth().sendPasswordResetEmail(email).then(() => {
             setCarregando(0)
             setMsgTipo('sucesso')
             setMsg('Enviamos um link no seu email para você redefinir a senha!')
             setAlertas(true)
         }).catch(erro => {
             setCarregando(0)
-            setMsgTipo('erro')
-            setMsg('Verifique se o email digitado está correto!')
             setAlertas(true)
+            switch (erro.message) {
+                case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+                setMsg('Não há registro de usuário correspondente a este e-mail!')
+                break;
+
+                case 'The email address is badly formatted.':
+                setMsg('O formato do email é inválido!')
+                break;
+
+                default:
+                setMsg('Entre em contato com administrador do sistema!');
+                break;
+            }
+            setMsgTipo('erro')
         })
     }
 
@@ -56,9 +71,12 @@ function RecuperarSenha() {
                         {/* Email input */}
                         <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="form3Example3">Email</label>
-                            <input type="email" id="form3Example3" className="form-control"
+                            <input type="email" id="form3Example3" className={`form-control ${errors.email ? "is-invalid" : ""}`}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Digite seu email" />
+                                {errors.email && (
+                                    <div className=" invalid-feedback">{errors.email}</div>
+                                )}
                         </div>
 
                         <div className="d-flex justify-content-between align-items-center">
