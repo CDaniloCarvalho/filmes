@@ -1,47 +1,124 @@
-.navbar{
+.menu{
     background-color:#1a274cbb;
-    padding: 5px 10px;;
 }
 
-.nav-item a{
-    color: #fff;
-    transition: .3s ease-in;
-}
-
-.nav-item a:hover{
-    color: #bebfc0;
-}
-
-.search{
-    display: block;
-}
-.menu {
+.menu-btn {
     background-color: #8894b4bb;
+    margin: 0 6px;
     color: white;
-    padding: 10px 12px;
+    padding: 5px 16px;
     border: none;
     outline: none;
     cursor: pointer;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-  }
-  
-  .menu:hover {
-    background-color: #586ea4bb;
-  }
-  
-.navbar-nav{
+}
+
+.menu-btn:hover {
+    background-color: #586ea4bb;   
+    transition: .3s ease-in;
+}
+
+.menu-superior{
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.menu-superior .links{
+    margin: 0;
+    height: 50px;
+    width: auto;
+    display: flex;
+}
+
+.menu-link {
+    text-decoration: none;
+    color:white;
+    height: 50px;
+    text-align: center;
+    padding: 10px  20px;
+    width: 200px;
+    border: solid rgba(0, 0, 0, 0.176) 0.01em;
+}
+
+.menu-link:hover{
+    transition: .3s ease-in;
+    background-color:  #8990a061;
+    color:white;
+}
+
+.search{
+    position: absolute;
+    list-style: none;
+    right:  80px;
+    width: 280px;
+    top:10px;
+}
+
+.sair a{
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    position: absolute;
+    right:  15px;
+    top: 15px;
+}
+.sair{
+    list-style: none;
+}
+
+.menu-responsivo {
     padding: 0;
 }
 
+.menu-link2 {
+    list-style: none;
+    color:white;
+    height: 50px;
+    text-align: center;
+    position: relative;
+}
 
-@media (max-width: 991px) {
-    .search{
+.n-link {
+    text-decoration: none;
+    color:white;
+    height: 50px;
+    text-align: center;
+    padding: 10px  20px;
+    width: 100%;
+    border: solid rgba(0, 0, 0, 0.176) 0.01em;
+    display: block;
+}
+
+.n-link:hover {
+    transition: .3s ease-in;
+    background-color:  #8990a061;
+    color:white;
+}
+
+@media (min-width: 991px) {
+    .menu-responsivo{
         display: none;
     }
-    .navbar{
-       padding: 0, 4px;
+}
+
+@media (max-width: 991px) {
+    .menu-btn {
+        display: block;
+    }
+    
+    .menu-superior{
+        display: none;
+    }
+}
+
+@media (max-width: 440px) {
+    .search{
+        display: none;
     }
 }

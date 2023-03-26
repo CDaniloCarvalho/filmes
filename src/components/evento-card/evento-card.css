@@ -28,8 +28,7 @@
     min-height: 180px;  
     margin-top: 5px;
 }
+
 .img-cartao:hover{
-    margin-top: 0px;
-    max-height: 190px;
-    min-height: 190px; 
+    margin-top: 0px;    
 }

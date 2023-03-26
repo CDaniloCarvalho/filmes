@@ -123,7 +123,7 @@ function EventoCadastro(props){
 
     return(
 
-        <div>
+        <>
             <Navbar/>
             {redirectFunc ? <Redirect to="/" /> : ''  }
              
@@ -135,16 +135,16 @@ function EventoCadastro(props){
                     <h4 className="mx-auto font-weitgh-bold text-center mt-4">{props.match.params.id ? 'Editar Dados' : 'Cadastrar' }</h4>
                 </div>
 
-                <form className="form row mt-4">
-                    <div className=" col-md-6">
-                        <label className=" ">Titulo:</label><span className="text-danger "> *</span>
-                        <input onChange={(e) => setTitulo(e.target.value)} type="text" className="form-control" value={titulo}/>
+                <form className="form row mt-2">
+                    <div className=" col-md-6 mt-4">
+                        <label className=" ">Título:</label><span className="text-danger "> *</span>
+                        <input onChange={(e) => setTitulo(e.target.value)} type="text" placeholder='Digite um título.' className="form-control" value={titulo}/>
                     </div>
 
-                    <div className="tipo col-md-6" >
-                        <label >Tipo do Evento:</label><span className="text-danger "> *</span>
+                    <div className="tipo col-md-6 mt-4" >
+                        <label>Gêneros:</label><span className="text-danger "> *</span>
                         <select onChange={(e) => setTipo(e.target.value)} className="form-control" value={ tipo } rows="3">
-                            <option disabled selected value>-- Selecione um Tipo --</option>
+                            <option disabled selected value>-- Selecione um Gênero --</option>
                             <option>Ação</option>
                             <option>Comedia</option>
                             <option>Terror</option>
@@ -152,31 +152,31 @@ function EventoCadastro(props){
                         </select>
                     </div>    
 
-                    <div className=" mt-3 col-md-12">
+                    <div className=" mt-4 col-md-12">
                         <label>Detalhes:</label><span className="text-danger "> *</span>
-                        <textarea onChange={(e) => setDetalhes(e.target.value)} className="form-control" value={ detalhes } />
+                        <textarea onChange={(e) => setDetalhes(e.target.value)} className="form-control" placeholder='Digite informações do filme.'  value={ detalhes } />
                     </div>
 
-                    <div className=" mt-3 col-md-6 mb-2">
+                    <div className=" mt-4 col-md-6 mb-2">
                         <label>Foto</label><span className="text-danger "> *</span>
-                        <input onChange={(e) => setFotoNova(e.target.files[0])} type="file" className="form-control col-md-4"/>
+                        <input onChange={(e) => setFotoNova(e.target.files[0])} type="file" className="form-control col-md-4" />
                     </div>
 
-                    <div className=" mt-3 col-md-6">
-                        <label>Link trailer:</label><span className="text-danger "> *</span>
-                        <input onChange={(e) => setTrailer(e.target.value)} className="form-control" value={ trailer } />
+                    <div className=" mt-4 col-md-6">
+                        <label>Link trailer:</label><span className="text-danger"> *</span>
+                        <input onChange={(e) => setTrailer(e.target.value)} placeholder='Ex: https://www.youtube.com/embed/djwhdjwh' className="form-control" value={ trailer } />
                     </div>
 
-                    <div className=' col-md-12 mt-5 sticky-bottom'>
+                    <div className=' col-md-12 btn-cadastrar '>
                         {
                             carregando >0 ? <div className="text-center" ><i className="fas fa-spin fa-spinner mt-3 fa-3x "></i></div>
-                            : <button onClick={props.match.params.id ? atualizar : cadastrar} type="button" className="btn btn-primary btn-sm btn-block mt-3  ">{props.match.params.id ? 'Atualizar' : 'Cadastrar' }</button>
+                            : <button onClick={props.match.params.id ? atualizar : cadastrar} type="button" className="btn btn-primary mt-3">{props.match.params.id ? 'Atualizar' : 'Cadastrar' }</button>
                         }
                     </div>
                 </form>
 
             </div>
-        </div>
+        </>
     )
 }
 
