@@ -128,7 +128,7 @@ function Login() {
                         </p>
 
                         <p className="small fw-bold text-center mt-3 pt-1 mb-0">
-                            <Link to="/" className="link fs-4 mx-1">Acessar sem Logar</Link>
+                            <Link to="/" className="link fs-4 mx-1">Acessar Sem Logar</Link>
                         </p>
                     </div>
                 </form>}
