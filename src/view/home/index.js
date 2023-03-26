@@ -3,12 +3,13 @@ import './home.css';
 import Navbar from '../../components/navbar';
 import {useSelector} from 'react-redux';
 import firebase from '../../config/firebase';
-import EventoCard from '../../components/card';
+import Card from '../../components/card';
 function Home({match}){
 
-    const [eventos, setEventos] = useState([]);
+    const [data, setData] = useState([]);
     const [pesquisa, setPesquisa] = useState('');
-    let listaeventos = [];
+    const [carregando, setCarregando] = useState(true);
+    let listData = [];
     const usuarioEmail = useSelector(state => state.usuarioEmail);
 
     const search = event => {
@@ -22,13 +23,14 @@ function Home({match}){
                 await resultado.docs.forEach(doc =>{
                     if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
                     {
-                        listaeventos.push({
+                        listData.push({
                             id: doc.id,
                             ...doc.data()
                         })
                     }
                 })
-                setEventos(listaeventos);
+                setData(listData);
+                setCarregando(false);
             });
 
         }else{
@@ -36,13 +38,14 @@ function Home({match}){
                 await resultado.docs.forEach(doc =>{
                     if(doc.data().titulo.toUpperCase().indexOf(pesquisa.toUpperCase()) >= 0)
                     {
-                        listaeventos.push({
+                        listData.push({
                             id: doc.id,
                             ...doc.data()
                         })
                     }
                 })
-                setEventos(listaeventos);
+                setData(listData);
+                setCarregando(false);
             });
         }
 
@@ -50,19 +53,24 @@ function Home({match}){
 
     return(  
         <div className="container-fluid">
-            <Navbar search={search} />    
-            <div className="lista-filmes row p-2 mx-auto">
-                <div className="col-lg-12 mx-auto ">
-                    <div className="main-home rounded">
-                        <div className="row p-3 mx-auto ">
-                            <h3 className="text-center p-4 ">Filmes</h3>
-                        </div>
-                        <div className="row p-3 mx-auto">
-                            {eventos.map (item => <EventoCard key={item.id} id={item.id} img={item.foto} titulo={item.titulo} detalhes={item.detalhes} visualizacoes={item.visualizacoes}/>) }
+            <Navbar search={search} />  
+            {carregando ?  
+                
+                <div className="row  mt-5 "><i className=" text-center text-primary fs-1 fas fa-spin fa-spinner"></i></div>
+            :
+                <div className="lista-filmes row p-2 mx-auto">
+                    <div className="col-lg-12 mx-auto ">
+                        <div className="main-home rounded">
+                            <div className="row p-3 mx-auto ">
+                                <h3 className="text-center p-4 ">Filmes</h3>
+                            </div>
+                            <div className="row p-3 mx-auto">
+                                {data.map (item => <Card key={item.id} id={item.id} img={item.foto} titulo={item.titulo} detalhes={item.detalhes} visualizacoes={item.visualizacoes}/>) }
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>   
     )
 };

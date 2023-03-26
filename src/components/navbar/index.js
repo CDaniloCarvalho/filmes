@@ -21,8 +21,8 @@ function Navbar({search}){
 
                 <ul class="menu-superior">
                     <li className='links'><Link className="menu-link" to="/">Início</Link></li>
-                    <li className='links'><Link className="menu-link" to="/eventocadastro">Publicar</Link></li>
-                    <li className='links'><Link className="menu-link" to="/eventos/meus">Minhas publicações</Link></li>
+                    <li className='links'><Link className="menu-link" to="/cadastro">Publicar</Link></li>
+                    <li className='links'><Link className="menu-link" to="/home/meus">Minhas publicações</Link></li>
                     <li className={`search`}> <Search search={search} /></li>
                     <li className='sair'><Link to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>&#10095; Sair</Link></li> 
                 </ul>
@@ -31,8 +31,8 @@ function Navbar({search}){
                     <li className={`search`}> <Search search={search} /></li>  
                     <li className='sair'><Link to="/login" onClick={()=>   dispatch({type:'LOG_OUT'})}>&#10095; Sair</Link></li>
                     <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'} `}><Link className="n-link " to="/">Início</Link></li>
-                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/eventocadastro">Publicar</Link></li>            
-                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/eventos/meus">Minhas publicações</Link></li>            
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/cadastro">Publicar</Link></li>            
+                    <li className={`menu-link2 ${ nav ? 'd-block' : 'd-none'}`}><Link className="n-link " to="/home/meus">Minhas publicações</Link></li>            
                 </ul> 
                                          
             </div> :
